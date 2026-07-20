@@ -1,0 +1,1793 @@
+<title>Annalisa Bignami · Discipline aeree a Milano, Morbegno e in Lombardia</title>
+
+<style>
+  :root {
+    /* I teli danno la palette. Tinte luminose ma non sature:
+       chiare abbastanza da reggere il testo scuro sopra. */
+    --mandarino: #EE8763;
+    --albicocca: #F2C57C;
+    --lampone:   #EDA2B1;
+    --acqua:     #6FC6B3;
+
+    /* tinte di fondo: ogni sezione sta su una, mai due uguali di fila */
+    --panna:     #FFFCF8;
+    --pesca:     #FFE7DA;
+    --sole:      #FFF2D3;
+    --menta:     #DFF2EB;
+    --rosa:      #FBE4EA;
+
+    /* versioni tenui per i riquadri delle icone */
+    --pesca-lo:  #FDF0E8;
+    --sole-lo:   #FDF6E4;
+    --menta-lo:  #E9F6F1;
+    --rosa-lo:   #FCEFF2;
+
+    --bg:        var(--panna);
+    --fg:        #33211C;
+    --fg-mid:    #6E554D;
+    --fg-soft:   #9B8078;
+    --card:      #FFFFFF;
+    --line:      #F0DFD4;
+
+    --disc-hi:   #FFFFFF;
+    --disc-mid:  #FFF9F4;
+    --disc-lo:   #FBE3D5;
+    --figure:    #33211C;
+    color-scheme: light;
+  }
+
+  /* Il sito è pensato nella luce. In tema scuro si scalda appena, non si spegne. */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #FBF3EC; --card: #FFFFFF; --line: #E9D5C8;
+      --fg: #33211C; --fg-mid: #6E554D; --fg-soft: #9B8078;
+      color-scheme: light;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #FBF3EC; --card: #FFFFFF; --line: #E9D5C8;
+    --fg: #33211C; --fg-mid: #6E554D; --fg-soft: #9B8078;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ---------------- tipografia ---------------- */
+
+  .display {
+    font-family: "Trebuchet MS", "Segoe UI", "Lucida Grande", Verdana, sans-serif;
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  h2.display { font-size: clamp(2rem, 5.4vw, 3.3rem); }
+  h3 { margin: 0; font-size: 1.08rem; font-weight: 700; }
+  p { margin: 0; }
+
+  /* l'etichetta di sezione siede su un nastro colorato */
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    margin: 0; padding: 0.4rem 0.95rem 0.45rem;
+    border-radius: 999px;
+    background: var(--tint-strong, var(--mandarino));
+    color: var(--fg);
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.2em; text-indent: 0.2em; text-transform: uppercase;
+  }
+
+  .lede { color: var(--fg-mid); font-size: 1.09rem; max-width: 38rem; }
+
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--mandarino); outline-offset: 3px; border-radius: 6px; }
+
+  .wrap { width: min(1120px, 100% - clamp(1.6rem, 6vw, 5rem)); margin-inline: auto; }
+
+  .reveal { opacity: 0; transform: translateY(18px);
+            transition: opacity .6s ease, transform .6s cubic-bezier(.22,.7,.3,1); }
+  .reveal.on { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------------- barra ---------------- */
+
+  .topbar {
+    position: sticky; top: 0; z-index: 30;
+    background: color-mix(in srgb, var(--panna) 92%, transparent);
+    backdrop-filter: blur(12px);
+  }
+  .topbar .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1.4rem; padding-block: 0.9rem;
+  }
+  .brand {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    font-size: 0.74rem; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; text-decoration: none; white-space: nowrap;
+  }
+  /* piccolo nastro al posto del segno di spunta */
+  .brand::before {
+    content: ""; width: 7px; height: 22px; border-radius: 4px;
+    background: linear-gradient(var(--mandarino), var(--lampone));
+  }
+  .nav { display: flex; gap: clamp(0.9rem, 2.4vw, 1.9rem);
+         font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .nav a { text-decoration: none; color: var(--fg-mid); white-space: nowrap;
+           padding-bottom: 3px; border-bottom: 2px solid transparent; }
+  .nav a:hover { color: var(--fg); border-bottom-color: var(--albicocca); }
+  @media (max-width: 820px) { .nav .hide-sm { display: none; } }
+  @media (max-width: 430px) {
+    .brand { font-size: 0.64rem; letter-spacing: 0.12em; }
+    .nav { font-size: 0.68rem; letter-spacing: 0.05em; gap: 0.9rem; }
+  }
+
+  /* ---------------- bottoni ---------------- */
+
+  .actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+  .btn {
+    display: inline-block; padding: 0.95rem 1.75rem; border-radius: 999px;
+    font-size: 0.76rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none; border: 2px solid transparent;
+    transition: transform .2s cubic-bezier(.3,1.4,.6,1), box-shadow .2s ease,
+                background-color .2s ease, color .2s ease;
+  }
+  /* testo scuro su tinta chiara: con questi colori il bianco non sarebbe leggibile */
+  .btn-solid {
+    background: var(--mandarino); color: var(--fg);
+    box-shadow: 0 8px 0 -2px #D9744F;
+  }
+  .btn-solid:hover { transform: translateY(-3px); box-shadow: 0 11px 0 -2px #D9744F; }
+  .btn-solid:active { transform: translateY(2px); box-shadow: 0 4px 0 -2px #D9744F; }
+  .btn-ghost { border-color: var(--fg); color: var(--fg); }
+  .btn-ghost:hover { background: var(--sole); transform: translateY(-3px); }
+
+  /* ---------------- nastri divisori ---------------- */
+
+  /* preserveAspectRatio="none" scala in modo non uniforme: senza
+     vector-effect il tratto si schiaccia e diventa una fascia piatta */
+  .ribbon-break { display: block; width: 100%; height: clamp(44px, 6vw, 76px); }
+  .ribbon-break path {
+    fill: none; stroke-width: 7; stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  /* ---------------- hero ---------------- */
+
+  .hero { padding-block: clamp(2.5rem, 7vw, 5rem) clamp(2.5rem, 6vw, 4rem); }
+  .hero-grid { display: grid; gap: clamp(2.2rem, 6vw, 4rem); align-items: center; }
+  @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.06fr 0.94fr; } }
+
+  .hero-copy { display: flex; flex-direction: column; align-items: start; gap: 1.4rem; }
+  .hero h1 { font-size: clamp(2.6rem, 7vw, 4.5rem); }
+
+  /* la parola chiave è evidenziata da un colpo di pennarello, non da un altro colore di testo */
+  .mark {
+    position: relative; z-index: 0; white-space: nowrap;
+  }
+  .mark::before {
+    content: ""; position: absolute; z-index: -1;
+    left: -0.12em; right: -0.12em; bottom: 0.14em; height: 0.34em;
+    background: var(--albicocca);
+    border-radius: 999px 999px 999px 4px;
+    transform: rotate(-1.1deg);
+  }
+
+  .hero-note {
+    display: flex; align-items: center; gap: 0.65rem;
+    font-size: 0.83rem; color: var(--fg-soft);
+  }
+  .hero-note b { color: var(--fg); font-weight: 700; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--acqua); flex: none; }
+
+  /* ---------------- icone ---------------- */
+
+  .ico { width: 22px; height: 22px; display: block; }
+  .ico use, .ico { stroke-linecap: round; stroke-linejoin: round; }
+  .chip {
+    width: 46px; height: 46px; border-radius: 15px;
+    display: grid; place-items: center; flex: none;
+    background: var(--chip-bg, var(--pesca-lo));
+    color: var(--chip-fg, var(--mandarino));
+  }
+
+  /* ---------------- medaglione ---------------- */
+
+  /* alone colorato dietro il disco: mette colore senza sporcare il bianco latteo */
+  .medallion-wrap { position: relative; display: grid; place-items: center; }
+  .medallion-wrap::before {
+    content: ""; position: absolute;
+    width: min(430px, 92%); aspect-ratio: 1; border-radius: 50%;
+    background: var(--menta);
+    transform: translate(-5%, 6%);
+  }
+  .medallion-wrap::after {
+    content: ""; position: absolute;
+    width: min(400px, 86%); aspect-ratio: 1; border-radius: 50%;
+    background: var(--sole);
+    transform: translate(7%, -7%);
+  }
+
+  .medallion {
+    position: relative; z-index: 1; width: min(400px, 86%); margin-inline: auto;
+    aspect-ratio: 1; border-radius: 50%; overflow: hidden;
+    background: radial-gradient(76% 70% at 32% 24%,
+      var(--disc-hi) 0%, var(--disc-mid) 54%, var(--disc-lo) 100%);
+    box-shadow:
+      inset -12px -14px 30px -26px rgba(180, 92, 50, .26),
+      0 22px 40px -28px rgba(180, 92, 50, .45);
+  }
+  .medallion svg { display: block; width: 100%; height: 100%; }
+
+  /* con l'inquadratura ravvicinata il perno resta dentro il campo:
+     l'oscillazione si vede senza far scivolare i teli fuori dal cerchio */
+  #rig { transform-box: view-box; transform-origin: 205px 30px;
+         animation: swing 26s cubic-bezier(.37,0,.63,1) infinite; }
+  #aerialist { transform-box: view-box; transform-origin: 200px 132px;
+               animation: figure 26s cubic-bezier(.42,0,.58,1) infinite; }
+  #legA, #legB { transform-box: view-box; transform-origin: 200px 188px; }
+  #legA { animation: legA 26s cubic-bezier(.42,0,.58,1) infinite; }
+  #legB { animation: legB 26s cubic-bezier(.42,0,.58,1) infinite; }
+
+  @keyframes swing {
+    0%{transform:rotate(-3.2deg)} 14%{transform:rotate(3.6deg)}
+    28%{transform:rotate(-1.8deg)} 44%{transform:rotate(2.2deg)}
+    58%{transform:rotate(-4.2deg)} 74%{transform:rotate(2.8deg)}
+    88%{transform:rotate(-1.4deg)} 100%{transform:rotate(-3.2deg)}
+  }
+  @keyframes figure {
+    0%,10%{transform:rotate(0deg) translateY(0)}
+    26%{transform:rotate(-180deg) translateY(4px)}
+    38%{transform:rotate(-186deg) translateY(26px)}
+    48%{transform:rotate(-174deg) translateY(26px)}
+    64%{transform:rotate(-360deg) translateY(6px)}
+    78%{transform:rotate(-352deg) translateY(0)}
+    92%{transform:rotate(-366deg) translateY(2px)}
+    100%{transform:rotate(-360deg) translateY(0)}
+  }
+  @keyframes legA {
+    0%,10%{transform:rotate(-4deg)} 26%{transform:rotate(4deg)}
+    38%{transform:rotate(-26deg)} 48%{transform:rotate(-30deg)}
+    64%{transform:rotate(2deg)} 78%{transform:rotate(-6deg)} 100%{transform:rotate(-4deg)}
+  }
+  @keyframes legB {
+    0%,10%{transform:rotate(3deg)} 26%{transform:rotate(-3deg)}
+    38%{transform:rotate(24deg)} 48%{transform:rotate(28deg)}
+    64%{transform:rotate(-2deg)} 78%{transform:rotate(5deg)} 100%{transform:rotate(3deg)}
+  }
+  @media (prefers-reduced-motion: reduce) { #rig,#aerialist,#legA,#legB { animation: none; } }
+
+  .crease { fill: none; stroke: rgba(255,255,255,.34); stroke-width: 2; stroke-linecap: round; }
+  .limb { fill: none; stroke: var(--figure); stroke-linecap: round; stroke-linejoin: round; }
+  .torso { stroke-width: 12; } .arm { stroke-width: 5.5; } .leg { stroke-width: 6.5; }
+  .head { fill: var(--figure); }
+
+  /* ---------------- sezioni ---------------- */
+
+  /* Ogni sezione non e' una tinta piatta ma una sfumatura che scivola verso la
+     tinta della sezione seguente: il passaggio tra due fasce non e' piu' uno
+     scalino. Sopra, due semibolle ancorate agli angoli, meta' fuori schermo. */
+  section {
+    padding-block: clamp(3rem, 8vw, 5.5rem);
+    position: relative; overflow: clip;
+  }
+  /* Gli strati, dal basso: sfondo della sezione -> bolle (0) -> teli (5) ->
+     contenuto (6) -> intestazione (30) -> barra di avanzamento (40).
+     Cosi' i teli velano solo i fondi, mai il testo o le schede. */
+  .wrap { position: relative; z-index: 6; }
+
+  .tint-pesca {
+    background: linear-gradient(163deg, #FFF3EB 0%, var(--pesca) 52%, #FFF1DD 100%);
+    --tint-strong: var(--mandarino); --bolla: 238 135 99;
+  }
+  .tint-sole {
+    background: linear-gradient(163deg, #FFF9E9 0%, var(--sole) 52%, #EFF7F1 100%);
+    --tint-strong: var(--albicocca); --bolla: 226 176 88;
+  }
+  .tint-menta {
+    background: linear-gradient(163deg, #EBF8F3 0%, var(--menta) 52%, #FDF0E8 100%);
+    --tint-strong: var(--acqua); --bolla: 111 198 179;
+  }
+  .tint-rosa {
+    background: linear-gradient(163deg, #FEF2F5 0%, var(--rosa) 52%, #FFF4E2 100%);
+    --tint-strong: var(--lampone); --bolla: 237 162 177;
+  }
+  /* panna: per le sezioni con dentro riquadri di tutti e quattro i colori, che
+     su una tinta forte perderebbero uno dei quattro. Qui parlano solo le bolle. */
+  .tint-panna {
+    background: linear-gradient(163deg, #FFFCF8 0%, #FFF8F1 55%, #FDF6EA 100%);
+    --tint-strong: var(--mandarino); --bolla: 237 150 168;
+  }
+
+  /* Semibolle: cerchi grandi appoggiati agli angoli, tagliati dal bordo della
+     sezione. Sfumano verso il centro cosi' il testo che ci passa sopra resta
+     leggibile. Nessuna e' un cerchio intero: si vede sempre solo un quarto. */
+  [class*="tint-"]::before, [class*="tint-"]::after {
+    content: ""; position: absolute; z-index: 0; pointer-events: none;
+    width: clamp(240px, 34vw, 460px); aspect-ratio: 1; border-radius: 50%;
+    background:
+      /* il bordo: un anello sottile, cosi' il cerchio si legge come cerchio */
+      radial-gradient(circle at 50% 50%,
+                rgb(var(--bolla) / 0) 0 61%,
+                rgb(var(--bolla) / .34) 62% 63.4%,
+                rgb(var(--bolla) / 0) 64.6%),
+      /* il corpo: pieno tenue che sfuma verso il centro della pagina */
+      radial-gradient(circle at 50% 50%,
+                rgb(var(--bolla) / .26) 0 44%,
+                rgb(var(--bolla) / .16) 58%,
+                rgb(var(--bolla) / 0) 63%);
+  }
+  /* Escono dal fianco destro o sinistro, mai dal bordo alto o basso: se una bolla
+     venisse tagliata dalla giunzione tra due sezioni resterebbe uno spigolo netto
+     al posto della curva. Il centro sta sempre dentro la fascia. */
+  [class*="tint-"]::before { top: 38%; right: 0; transform: translate(44%, -50%); }
+  [class*="tint-"]::after {
+    top: 74%; left: 0; bottom: auto; width: clamp(180px, 26vw, 380px);
+    transform: translate(-46%, -50%);
+  }
+  /* le sezioni pari scambiano i lati, cosi' scorrendo non si ripete lo schema */
+  .tint-sole::before, .tint-rosa::before { right: auto; left: 0; transform: translate(-44%, -50%); }
+  .tint-sole::after,  .tint-rosa::after  { left: auto; right: 0; transform: translate(46%, -50%); }
+  .tint-panna::before { right: auto; left: 0; transform: translate(-46%, -50%); }
+
+  /* Sullo schermo stretto una scheda occupa tutta la larghezza: una bolla al
+     38% rientrerebbe per forza sotto al testo. Restano affacciate dal bordo,
+     poco piu' di uno spicchio, e senza l'anello che le rendeva squillanti. */
+  @media (max-width: 780px) {
+    [class*="tint-"]::before, [class*="tint-"]::after {
+      width: clamp(200px, 58vw, 300px);
+      background: radial-gradient(circle at 50% 50%,
+                  rgb(var(--bolla) / .24) 0 44%,
+                  rgb(var(--bolla) / .14) 58%,
+                  rgb(var(--bolla) / 0) 63%);
+    }
+    [class*="tint-"]::before { transform: translate(62%, -50%); }
+    [class*="tint-"]::after  { transform: translate(-64%, -50%); }
+    .tint-sole::before, .tint-rosa::before, .tint-panna::before { transform: translate(-62%, -50%); }
+    .tint-sole::after,  .tint-rosa::after  { transform: translate(64%, -50%); }
+  }
+
+  /* Telefono: le voci del menu devono essere colpibili col pollice (44px, la
+     misura minima di Apple), i titoli non devono spezzarsi male, le sezioni
+     respirano un po' meno perche' lo schermo e' corto. */
+  @media (max-width: 640px) {
+    .nav a { padding-block: .75rem; }
+    section { padding-block: clamp(2.6rem, 9vw, 3.4rem); }
+    .section-head { margin-bottom: 1.6rem; gap: .7rem; }
+    .display { text-wrap: balance; hyphens: auto; }
+    .lede { text-wrap: pretty; }
+    .btn { min-height: 46px; }
+  }
+
+  .section-head {
+    display: flex; flex-direction: column; align-items: start; gap: 1rem;
+    max-width: 40rem; margin-bottom: clamp(2rem, 5vw, 3.2rem);
+  }
+
+  /* ---- tre percorsi ---- */
+
+  .paths { display: grid; gap: 1.1rem; }
+  @media (min-width: 620px)  { .paths { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .paths { grid-template-columns: repeat(4, 1fr); } }
+
+  .path {
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column; gap: 0.85rem;
+    padding: clamp(1.6rem, 3.4vw, 2rem);
+    background: var(--card); border-radius: 22px;
+    transition: transform .26s cubic-bezier(.3,1.2,.6,1), box-shadow .26s ease;
+  }
+  /* ogni percorso ha il suo telo lungo il bordo */
+  .path::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 9px;
+    background: var(--accent);
+  }
+  /* --accent colora le superfici, --accent-ink il testo piccolo:
+     le tinte chiare non reggono un maiuscoletto su fondo bianco */
+  .path:nth-child(1) { --accent: var(--mandarino); --accent-ink: #C05B33; --chip-bg: var(--pesca-lo); }
+  .path:nth-child(2) { --accent: var(--acqua);     --accent-ink: #2C8C77; --chip-bg: var(--menta-lo); }
+  .path:nth-child(3) { --accent: var(--albicocca); --accent-ink: #A2701A; --chip-bg: var(--sole-lo); }
+  .path:nth-child(4) { --accent: var(--lampone);   --accent-ink: #BE5871; --chip-bg: var(--rosa-lo); }
+  .path .chip { color: var(--accent-ink); }
+  .path b { font-weight: 700; color: var(--fg); }
+  .path:hover { transform: translateY(-6px); box-shadow: 0 20px 34px -24px rgba(120, 70, 40, .6); }
+
+  .path .who { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.18em;
+               text-transform: uppercase; color: var(--accent-ink); }
+  .path h3 { font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+             font-size: 1.45rem; line-height: 1.15; letter-spacing: -0.015em; }
+  .path p { color: var(--fg-mid); font-size: 0.97rem; }
+  .path .go {
+    margin-top: auto; padding-top: 1rem;
+    font-size: 0.73rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none; color: var(--accent-ink);
+  }
+  .path .go::after { content: " →"; }
+
+  /* ---- metodo ---- */
+
+  .method { display: grid; gap: clamp(1.4rem, 3.5vw, 2.2rem); }
+  @media (min-width: 780px) { .method { grid-template-columns: repeat(3, 1fr); } }
+  .principle { display: flex; flex-direction: column; gap: 0.65rem; }
+  .principle .badge {
+    width: 42px; height: 42px; border-radius: 14px;
+    display: grid; place-items: center;
+    font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+    font-weight: 700; font-size: 1.05rem; color: var(--fg);
+    transform: rotate(-4deg);
+  }
+  .principle:nth-child(1) .badge { background: var(--mandarino); }
+  .principle:nth-child(2) .badge { background: var(--acqua); }
+  .principle:nth-child(3) .badge { background: var(--lampone); }
+  .principle p { color: var(--fg-mid); font-size: 0.97rem; }
+
+  /* ---- discipline ---- */
+
+  .disciplines { display: grid; gap: 1.1rem; }
+  @media (min-width: 720px) { .disciplines { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 980px) { .disciplines.three { grid-template-columns: repeat(3, 1fr); } }
+
+  /* ---------------- eventi: un palcoscenico ---------------- */
+
+  #eventi {
+    position: relative;
+    overflow: hidden;
+    background: var(--pesca);
+    padding-bottom: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  /* due fasci di luce dall'alto, come su un palco */
+  .stage-light {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(60% 42% at 50% -6%, rgba(255,255,255,.95), transparent 70%),
+      linear-gradient(172deg, rgba(255,255,255,.85) 0 22%, transparent 55%),
+      linear-gradient(196deg, rgba(255,246,224,.9) 0 26%, transparent 58%);
+  }
+  #eventi > .wrap, #eventi > .marquee { position: relative; z-index: 6; }
+
+  .show-cards { display: grid; gap: 1rem; }
+  @media (min-width: 560px) { .show-cards { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 980px) { .show-cards { grid-template-columns: repeat(4, 1fr); } }
+
+  /* le schede sono appese, quindi pendono appena */
+  .show {
+    display: flex; flex-direction: column; gap: 0.45rem;
+    padding: 1.4rem 1.4rem 1.5rem; border-radius: 20px;
+    background: var(--card);
+    box-shadow: 0 16px 30px -26px rgba(120, 70, 40, .8);
+    transition: transform .3s cubic-bezier(.3,1.2,.6,1), box-shadow .3s ease;
+  }
+  .show:nth-child(odd)  { transform: rotate(-1.1deg); }
+  .show:nth-child(even) { transform: rotate(1deg); }
+  .show:hover { transform: rotate(0deg) translateY(-5px); box-shadow: 0 22px 34px -24px rgba(120, 70, 40, .9); }
+  .show h3 { font-size: 1.02rem; }
+  .show p { font-size: 0.88rem; color: var(--fg-mid); }
+  .show:nth-child(1) .chip { background: var(--pesca-lo); color: #C05B33; }
+  .show:nth-child(2) .chip { background: var(--menta-lo); color: #2C8C77; }
+  .show:nth-child(3) .chip { background: var(--sole-lo);  color: #A2701A; }
+  .show:nth-child(4) .chip { background: var(--rosa-lo);  color: #BE5871; }
+  .show .chip.sm { width: 38px; height: 38px; border-radius: 12px; }
+  .show .chip.sm .ico { width: 19px; height: 19px; }
+
+  /* cartellone: i posti dove ha gia' lavorato, in scorrimento */
+  .marquee {
+    margin-block: clamp(2rem, 5vw, 3rem);
+    padding-block: 0.9rem;
+    background: var(--card);
+    border-block: 1px solid var(--line);
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee-track {
+    display: flex; width: max-content; align-items: center;
+    animation: scorri 38s linear infinite;
+  }
+  .marquee-track span {
+    padding-inline: 1.3rem;
+    font-size: 0.86rem; font-weight: 700; letter-spacing: 0.06em;
+    white-space: nowrap; color: var(--fg);
+  }
+  .marquee-track span[aria-hidden] { color: var(--albicocca); font-size: 0.7rem; }
+  @keyframes scorri { to { transform: translateX(-50%); } }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+  /* Due teli appesi alla finestra, sullo stesso lato: restano fermi mentre la
+     pagina scorre. Forme piene, cosi' possono essere strette in alto e ampie in
+     basso come il tessuto vero. "multiply" perche' ogni sezione ha il suo fondo. */
+  .drapes {
+    position: fixed; inset: 0; z-index: 5;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: .3;
+  }
+  .drapes svg { width: 100%; height: 100%; display: block; }
+
+  /* sul telefono il bordo sinistro sfiora il testo: piu' pallidi e piu' stretti */
+  @media (max-width: 780px) {
+    .drapes { opacity: .13; transform: scaleX(.55); transform-origin: left center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .drapes animate { display: none; }
+  }
+
+  /* avanzamento della lettura: filo sottile in cima */
+  .progress {
+    position: fixed; inset: 0 auto auto 0; z-index: 40;
+    height: 3px; width: 100%;
+    background: linear-gradient(90deg, var(--mandarino), var(--albicocca));
+    transform: scaleX(0); transform-origin: 0 50%;
+    transition: transform .1s linear;
+  }
+
+  /* sezione in lettura evidenziata nel menu */
+  .nav a.active:not(.nav-pill) { color: var(--fg); border-bottom-color: var(--mandarino); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .progress { transition: none; }
+  }
+
+  .nav-sep {
+    width: 1px; height: 16px; background: var(--line); flex: none;
+    align-self: center;
+  }
+  @media (max-width: 820px) { .nav-sep { display: none; } }
+
+  /* etichette del pubblico: dicono a chi si rivolge il corso, non decorano */
+  .audience {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin: 0.1rem 0 0.2rem; padding: 0; list-style: none;
+  }
+  .audience li {
+    font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 0.24rem 0.6rem; border-radius: 999px;
+  }
+  .audience .ad { background: var(--pesca-lo); color: #C05B33; }
+  .audience .se { background: var(--rosa-lo);  color: #BE5871; }
+  .audience .ba { background: var(--sole-lo);  color: #A2701A; }
+  .audience .ra { background: var(--menta-lo); color: #2C8C77; }
+
+  /* la scheda del corso: intestazione compatta, niente vuoti interni */
+  .disc-head { display: flex; align-items: center; gap: 0.8rem; }
+  .disc-head h3 { font-size: 1.06rem; line-height: 1.2; }
+  .disc-head .audience { margin: 0.35rem 0 0; }
+  .disc .chip.sm { width: 38px; height: 38px; border-radius: 12px; }
+  .disc .chip.sm .ico { width: 19px; height: 19px; }
+  .disc .ticks.compact { gap: 0.42rem; }
+  .disc .ticks.compact li { font-size: 0.89rem; padding-left: 1.25rem; }
+  .disc .ticks.compact li::before { width: 6px; height: 6px; top: 0.58em; }
+
+  /* cosa succede dopo aver scritto: tre passi, in ordine reale */
+  .after {
+    list-style: none; margin: clamp(1.8rem, 4vw, 2.6rem) 0 0; padding: 0;
+    display: grid; gap: 1rem; text-align: left; width: 100%;
+  }
+  @media (min-width: 760px) { .after { grid-template-columns: repeat(3, 1fr); } }
+  .after li {
+    display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 0.85rem;
+    align-items: center;
+    padding: 1rem 1.15rem; border-radius: 18px; background: var(--card);
+  }
+  .after .chip { grid-row: span 2; }
+  .after b { font-size: 0.95rem; align-self: end; }
+  .after li > span:last-child { font-size: 0.85rem; color: var(--fg-mid); align-self: start; }
+  .after li:nth-child(1) .chip { background: var(--pesca-lo); color: #C05B33; }
+  .after li:nth-child(2) .chip { background: var(--menta-lo); color: #2C8C77; }
+  .after li:nth-child(3) .chip { background: var(--sole-lo);  color: #A2701A; }
+  .after .chip.sm { width: 38px; height: 38px; border-radius: 12px; }
+  .after .chip.sm .ico { width: 19px; height: 19px; }
+
+  .faq-out {
+    margin-top: clamp(1.4rem, 3vw, 2rem);
+    font-size: 0.95rem; color: var(--fg-mid);
+  }
+  .faq-out a { color: #C05B33; font-weight: 700; text-decoration: none;
+               border-bottom: 2px solid var(--mandarino); }
+  .faq-out a:hover { color: var(--fg); }
+
+  /* i corsi in due righe: sopra quelli sospesi, sotto quelli a terra */
+
+  .course-row {
+    display: grid; gap: clamp(0.9rem, 2.2vw, 1.2rem);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) { .course-row { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .course-row { grid-template-columns: repeat(3, 1fr); } }
+
+  .course-band {
+    display: flex; align-items: center; gap: 0.9rem;
+    margin: clamp(1.4rem, 3vw, 2rem) 0 clamp(0.8rem, 2vw, 1.1rem);
+  }
+  .course-band:first-of-type { margin-top: 0; }
+  .band-label {
+    font-size: 0.66rem; font-weight: 700; letter-spacing: 0.22em;
+    text-transform: uppercase; padding: 0.34rem 0.85rem; border-radius: 999px;
+    white-space: nowrap;
+  }
+  .band-label.aria  { background: var(--pesca-lo); color: #C05B33; }
+  .band-label.terra { background: var(--menta-lo); color: #2C8C77; }
+  .band-rule { flex: 1; height: 1px; background: var(--line); }
+  .band-note { font-size: 0.82rem; color: var(--fg-soft); white-space: nowrap; }
+  @media (max-width: 620px) { .band-note { display: none; } }
+
+  .ribbon-break.tight { height: clamp(38px, 5vw, 58px); margin-block: 0.4rem; }
+  .ribbon-break.tight path { stroke-width: 6; }
+
+  /* benefici: nessuna scheda bianca, il fondo chiaro della sezione basta */
+  .benefits { display: grid; gap: clamp(1.4rem, 3.5vw, 2.2rem); }
+  /* tre colonne, non cinque: a cinque le colonne diventano strisce di testo */
+  @media (min-width: 620px) { .benefits { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .benefits { grid-template-columns: repeat(3, 1fr); } }
+  /* ogni beneficio ha la sua tinta: schede bianche su fondo quasi bianco sparivano */
+  .benefit {
+    display: flex; flex-direction: column; gap: 0.6rem;
+    padding: clamp(1.2rem, 2.6vw, 1.5rem);
+    border-radius: 20px;
+    background: var(--tinta);
+    transition: transform .26s cubic-bezier(.3,1.2,.6,1), box-shadow .26s ease;
+  }
+  .benefits .benefit:nth-child(1) { --tinta: var(--pesca); }
+  .benefits .benefit:nth-child(2) { --tinta: var(--menta); }
+  .benefits .benefit:nth-child(3) { --tinta: var(--sole); }
+  .benefits .benefit:nth-child(4) { --tinta: var(--rosa); }
+  .benefits .benefit:nth-child(5) { --tinta: var(--pesca); }
+  .benefits .benefit .chip { background: #FFFFFF; }
+  .benefit:hover { transform: translateY(-5px); box-shadow: 0 18px 30px -24px rgba(120,70,40,.7); }
+  .benefit h3 { font-size: 1rem; }
+  .benefit p { color: var(--fg-mid); font-size: 0.93rem; }
+  .benefits .benefit:nth-child(1) .chip { color: #C05B33; }
+  .benefits .benefit:nth-child(2) .chip { color: #2C8C77; }
+  .benefits .benefit:nth-child(3) .chip { color: #A2701A; }
+  .benefits .benefit:nth-child(4) .chip { color: #BE5871; }
+  .benefits .benefit:nth-child(5) .chip { color: #C05B33; }
+
+  .actions.center { justify-content: center; margin-top: clamp(1.6rem, 4vw, 2.2rem); }
+
+  /* la prova ha tre momenti, non quattro: niente colonna vuota */
+  @media (min-width: 980px) { #prova .steps { grid-template-columns: repeat(3, 1fr); } }
+  .disc {
+    display: flex; flex-direction: column; gap: 0.7rem;
+    padding: clamp(1.25rem, 2.6vw, 1.55rem);
+    background: var(--card); border-radius: 20px;
+  }
+  .disc .chip { margin-bottom: 0.35rem; }
+  .disc:nth-child(1) .chip { background: var(--pesca-lo); color: #C05B33; }
+  .disc:nth-child(2) .chip { background: var(--menta-lo); color: #2C8C77; }
+  .disc:nth-child(3) .chip { background: var(--sole-lo);  color: #A2701A; }
+  .disc:nth-child(4) .chip { background: var(--rosa-lo);  color: #BE5871; }
+  .disc h3 { font-size: 1.12rem; }
+  .disc p { color: var(--fg-mid); font-size: 0.96rem; }
+  .disc .ticks { margin-block: 0.1rem 0.1rem; }
+  /* niente margin-top:auto: creava un vuoto quando la scheda si allungava */
+  .disc .meta {
+    margin-top: 0.15rem; padding-top: 0.75rem; border-top: 1px solid var(--line);
+    font-size: 0.78rem; color: var(--fg-soft);
+  }
+
+  /* fascia con le condizioni valide per ogni corso */
+  .promise {
+    display: grid; gap: 1rem; margin-top: clamp(1.4rem, 3.5vw, 2rem);
+  }
+  @media (min-width: 760px) { .promise { grid-template-columns: repeat(3, 1fr); } }
+  .promise-item {
+    display: flex; align-items: start; gap: 0.85rem;
+    padding: 1.1rem 1.2rem; border-radius: 18px;
+    background: color-mix(in srgb, var(--card) 62%, transparent);
+  }
+  .promise-item b { display: block; font-size: 0.94rem; }
+  .promise-item span { display: block; font-size: 0.86rem; color: var(--fg-mid); }
+  .promise-item:nth-child(1) .chip { background: var(--pesca-lo); color: #C05B33; }
+  .promise-item:nth-child(2) .chip { background: var(--sole-lo);  color: #A2701A; }
+  .promise-item:nth-child(3) .chip { background: var(--rosa-lo);  color: #BE5871; }
+  .promise .chip.sm { width: 38px; height: 38px; border-radius: 12px; }
+  .promise .chip.sm .ico { width: 19px; height: 19px; }
+
+  /* ---- chi sono ---- */
+
+  /* chi sono: fasce orizzontali, non due pile di scatole */
+
+  .side-title {
+    font-size: 0.64rem; font-weight: 700; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--fg-soft);
+  }
+  .ticks.compact li { font-size: 0.93rem; }
+
+  .cred {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 0.15rem 0.8rem;
+    align-items: start;
+  }
+  .cred .chip.sm { grid-row: span 2; }
+  .cred b { font-weight: 700; font-size: 0.94rem; }
+  .cred .year { font-size: 0.8rem; font-weight: 700; color: #C05B33;
+                font-variant-numeric: tabular-nums; }
+  .cred .issuer { grid-column: 2 / -1; font-size: 0.84rem; color: var(--fg-soft); }
+
+  .fig b {
+    display: block;
+    font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+    font-size: clamp(1.6rem, 4.4vw, 2.4rem); font-weight: 700; line-height: 1;
+    letter-spacing: -0.03em; font-variant-numeric: tabular-nums;
+  }
+  .fig:nth-child(1) b { color: #C05B33; }
+  .fig:nth-child(2) b { color: #2C8C77; }
+  .fig:nth-child(3) b { color: #BE5871; }
+  .fig span { display: block; margin-top: .45rem; font-size: 0.79rem;
+              color: var(--fg-soft); line-height: 1.35; }
+
+  .statement {
+    margin: clamp(1.8rem, 4vw, 2.6rem) 0 0;
+    padding: clamp(1.5rem, 4vw, 2.4rem) clamp(1.4rem, 4vw, 2.6rem);
+    background: var(--sole); border-radius: 24px;
+    font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+    font-weight: 700; letter-spacing: -0.015em; line-height: 1.28;
+    font-size: clamp(1.25rem, 3.2vw, 1.9rem);
+    max-width: 46rem;
+  }
+  .statement em { font-style: normal; color: #C05B33; }
+
+  /* a schermo stretto tre colonne sfondano: si impilano */
+  .figures {
+    display: grid; grid-template-columns: 1fr;
+    gap: clamp(0.7rem, 2.4vw, 1.4rem);
+    margin: clamp(1.4rem, 3.4vw, 2rem) 0 clamp(1.6rem, 4vw, 2.4rem);
+  }
+  @media (min-width: 560px) { .figures { grid-template-columns: repeat(3, 1fr); } }
+  .fig { background: var(--card); border-radius: 18px; padding: 1.1rem 1.2rem; }
+
+  .bio-grid { display: grid; gap: 1.1rem; }
+  @media (min-width: 760px)  { .bio-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1040px) { .bio-grid { grid-template-columns: 1.15fr 0.9fr 1fr; } }
+
+  .bio-card {
+    background: var(--card); border-radius: 20px;
+    padding: clamp(1.25rem, 2.6vw, 1.6rem);
+    display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .bio-card .cred {
+    grid-template-columns: auto 1fr auto;
+    padding: 0.65rem 0; background: transparent; border-radius: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .bio-card .cred:last-of-type { border-bottom: 0; padding-bottom: 0; }
+  .bio-card .cred b { font-size: 0.92rem; }
+
+  .place-row {
+    display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 0.8rem;
+    align-items: center;
+  }
+  .place-row b { display: block; font-size: 0.93rem; }
+  .place-row span { display: block; font-size: 0.84rem; color: var(--fg-mid); }
+  .place-row .chip { grid-row: span 2; }
+  .bio-card .chip.sm { width: 34px; height: 34px; border-radius: 11px; }
+  .bio-card .chip.sm .ico { width: 17px; height: 17px; }
+  .bio-card .side-note {
+    margin-top: auto; padding-top: 0.85rem; border-top: 1px solid var(--line);
+    font-size: 0.87rem; color: var(--fg-mid);
+  }
+  .bio-card .side-note b { color: var(--fg); font-weight: 700; }
+
+  .split { display: grid; gap: 1.1rem; }
+  @media (min-width: 820px) { .split { grid-template-columns: 1fr 1fr; } }
+  .panel {
+    display: flex; flex-direction: column; gap: 1rem;
+    padding: clamp(1.5rem, 3.4vw, 2rem);
+    background: var(--card); border-radius: 22px;
+  }
+  .ticks { margin: 0; padding: 0; list-style: none;
+           display: flex; flex-direction: column; gap: 0.85rem; }
+  .ticks li { position: relative; padding-left: 1.6rem;
+              font-size: 0.96rem; color: var(--fg-mid); }
+  .ticks li::before {
+    content: ""; position: absolute; left: 0; top: 0.52em;
+    width: 10px; height: 10px; border-radius: 3px;
+    background: var(--acqua); transform: rotate(-8deg);
+  }
+  .panel:nth-child(2) .ticks li::before { background: var(--albicocca); }
+  .ticks b { color: var(--fg); font-weight: 700; }
+
+  /* i quattro passi sono una sequenza reale: la numerazione porta informazione */
+  .steps { display: grid; gap: 1rem; margin-top: clamp(1.6rem, 4vw, 2.2rem); }
+  @media (min-width: 620px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 980px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+  .stepcard { display: flex; flex-direction: column; gap: 0.4rem;
+              padding: clamp(1.3rem, 3vw, 1.6rem); background: var(--card);
+              border-radius: 20px; }
+  .stepcard .num {
+    font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+    font-weight: 700; font-size: 1.5rem; line-height: 1; letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums; color: var(--step);
+  }
+  .stepcard:nth-child(1) { --step: var(--mandarino); }
+  .stepcard:nth-child(2) { --step: var(--albicocca); }
+  .stepcard:nth-child(3) { --step: var(--acqua); }
+  .stepcard:nth-child(4) { --step: var(--lampone); }
+  .stepcard p { font-size: 0.9rem; color: var(--fg-mid); }
+
+  /* ---- domande ---- */
+
+  .faq { display: flex; flex-direction: column; gap: 0.7rem; }
+  .qa { background: var(--card); border-radius: 18px; padding-inline: 1.35rem; }
+  .qa summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 1.2rem;
+    padding-block: 1.15rem; cursor: pointer; list-style: none;
+    font-size: 1.01rem; font-weight: 700;
+  }
+  .qa summary::-webkit-details-marker { display: none; }
+  .qa summary::after {
+    content: ""; flex: none; width: 26px; height: 26px; border-radius: 50%;
+    background: var(--albicocca) no-repeat center;
+    background-image: linear-gradient(var(--fg), var(--fg)), linear-gradient(var(--fg), var(--fg));
+    background-size: 11px 2.5px, 2.5px 11px;
+    transition: transform .25s ease;
+  }
+  .qa[open] summary::after { transform: rotate(135deg); }
+  .qa p { padding-bottom: 1.25rem; color: var(--fg-mid); font-size: 0.97rem; max-width: 54rem; }
+
+  /* ---- contatti ---- */
+
+  .contact { text-align: center; }
+  .contact .wrap { display: flex; flex-direction: column; align-items: center; gap: 1.3rem; }
+  .contact h2 { max-width: 18ch; }
+  .contact .lede { text-align: center; }
+  .lines { display: flex; flex-wrap: wrap; justify-content: center;
+           gap: 0.7rem clamp(1.2rem, 4vw, 2.4rem); }
+  .lines a, .lines span {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    text-decoration: none; font-size: 1rem; font-weight: 700;
+    padding: 0.55rem 1.1rem; border-radius: 999px; background: var(--card);
+  }
+  .lines .ico { color: #C05B33; }
+  .lines span .ico { color: #2C8C77; }
+  .lines a:hover { color: var(--mandarino); }
+  .lines span { background: transparent; font-weight: 400; color: var(--fg-soft); }
+
+  footer { padding-block: 2rem; font-size: 0.72rem; letter-spacing: 0.1em;
+           text-transform: uppercase; color: var(--fg-soft); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; justify-content: space-between; }
+</style>
+
+<!-- Icone disegnate sul mestiere: teli, cerchio, ancoraggio. Nessuna icona generica. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="i-base" fill="none" stroke="currentColor" stroke-width="1.7"
+       stroke-linecap="round" stroke-linejoin="round"></g>
+  </defs>
+  <symbol id="ico-silk" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 2 C 8 8, 11 11, 9.5 15 C 8.5 18, 8 20, 8.5 22" />
+    <path d="M15 2 C 16 8, 13 11, 14.5 15 C 15.5 18, 16 20, 15.5 22" />
+  </symbol>
+  <symbol id="ico-hoop" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="14" r="7.2" />
+    <path d="M12 2v4.8" />
+  </symbol>
+  <symbol id="ico-child" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="5.4" r="2.6" />
+    <path d="M12 8.4v6.2M12 14.6l-3.4 6M12 14.6l3.4 6M7 11h10" />
+  </symbol>
+  <symbol id="ico-stretch" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="9" cy="5" r="2.4" />
+    <path d="M9 7.6v5.6M9 13.2 3.6 18M9 13.2c4 0 7 1.6 9.4 4.4M14 9.6l5.4-2.2" />
+  </symbol>
+  <symbol id="ico-person" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="7" r="3.2" />
+    <path d="M4.8 20c0-3.6 3.2-6.2 7.2-6.2s7.2 2.6 7.2 6.2" />
+  </symbol>
+  <symbol id="ico-gym" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 21V8.5L12 3l9 5.5V21" />
+    <path d="M8 21v-6h8v6M8 8.6h1.5" />
+  </symbol>
+  <symbol id="ico-stage" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2.6 14.1 8l5.9.4-4.5 3.8 1.4 5.7L12 14.9 7.1 17.9l1.4-5.7L4 8.4 9.9 8z" />
+  </symbol>
+  <symbol id="ico-height" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3v18M12 3 8.6 6.6M12 3l3.4 3.6M12 21l-3.4-3.6M12 21l3.4-3.6" />
+    <path d="M4 3h4M16 3h4M4 21h4M16 21h4" />
+  </symbol>
+  <symbol id="ico-anchor" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4h16" />
+    <path d="M12 4v5" />
+    <circle cx="12" cy="11.2" r="2.2" />
+    <path d="M10.4 13 8 21M13.6 13 16 21" />
+  </symbol>
+  <symbol id="ico-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6.2 3.5h3l1.5 4-2 1.4a12 12 0 0 0 6.4 6.4l1.4-2 4 1.5v3c0 1-.8 1.8-1.8 1.7C10.6 19.7 4.3 13.4 3.5 5.3c-.1-1 .7-1.8 1.7-1.8z" />
+  </symbol>
+  <symbol id="ico-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.8" y="5" width="18.4" height="14" rx="2.6" />
+    <path d="m3.6 6.6 8.4 6 8.4-6" />
+  </symbol>
+  <symbol id="ico-hammock" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4v3M20 4v3" />
+    <path d="M4 7c0 6.5 3.6 10 8 10s8-3.5 8-10" />
+    <path d="M4 7h16" />
+  </symbol>
+  <symbol id="ico-dumbbell" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 9v6M6.4 7v10M17.6 7v10M21 9v6M6.4 12h11.2" />
+  </symbol>
+  <symbol id="ico-senior" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="10.5" cy="4.6" r="2.3" />
+    <path d="M10.5 7v6.4M10.5 13.4 8 21M10.5 13.4 13.6 21M7 10h6.6" />
+    <path d="M17.5 9v12" />
+  </symbol>
+  <symbol id="ico-juggle" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="5" cy="10" r="2" />
+    <circle cx="12" cy="4.6" r="2" />
+    <circle cx="19" cy="10" r="2" />
+    <path d="M6.4 12.4c1 4 3 6.2 5.6 6.2s4.6-2.2 5.6-6.2" />
+  </symbol>
+  <symbol id="ico-spine" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3v18" />
+    <path d="M9 6h6M8.6 10h6.8M8.6 14h6.8M9 18h6" />
+  </symbol>
+  <symbol id="ico-posture" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="4.4" r="2.3" />
+    <path d="M12 6.8v7M12 13.8 9.4 21M12 13.8 14.6 21M8.4 9.4h7.2" />
+  </symbol>
+  <symbol id="ico-balance" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3v16M4 19h16" />
+    <path d="M12 6.4 4.6 9.6M12 6.4l7.4 3.2" />
+    <circle cx="12" cy="3.4" r="1.4" />
+  </symbol>
+  <symbol id="ico-relax" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3.5 13.5c2-2.4 4-2.4 6 0s4 2.4 6 0 4-2.4 5 0" />
+    <path d="M4.5 8.2c1.6-2 3.2-2 4.8 0s3.2 2 4.8 0 3.2-2 4.4 0" />
+    <path d="M6 19c1.4-1.6 2.8-1.6 4.2 0s2.8 1.6 4.2 0" />
+  </symbol>
+  <symbol id="ico-diploma" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 6.5 12 3l9 3.5-9 3.5z" />
+    <path d="M6.5 8.6V14c0 1.9 2.5 3.2 5.5 3.2s5.5-1.3 5.5-3.2V8.6" />
+    <path d="M21 6.8v5" />
+  </symbol>
+  <symbol id="ico-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9" />
+    <path d="M3.2 9.6h17.6M3.2 14.4h17.6" />
+    <path d="M12 3c-2.6 2.6-3.8 5.6-3.8 9s1.2 6.4 3.8 9c2.6-2.6 3.8-5.6 3.8-9S14.6 5.6 12 3z" />
+  </symbol>
+  <symbol id="ico-group" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="9" cy="8" r="3" />
+    <circle cx="17" cy="9.5" r="2.2" />
+    <path d="M3 19c0-3 2.7-5.2 6-5.2s6 2.2 6 5.2M16.4 14.2c2.6.3 4.6 2.2 4.6 4.8" />
+  </symbol>
+  <symbol id="ico-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 5 6v5.6c0 4 2.9 7.5 7 9.4 4.1-1.9 7-5.4 7-9.4V6z" />
+    <path d="m9 12 2.2 2.2L15.4 10" />
+  </symbol>
+  <symbol id="ico-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 6.8V12l3.4 2.2" />
+  </symbol>
+  <symbol id="ico-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 21c4.2-4.6 6.4-8 6.4-10.8A6.4 6.4 0 0 0 5.6 10.2C5.6 13 7.8 16.4 12 21z" />
+    <circle cx="12" cy="10.2" r="2.4" />
+  </symbol>
+</svg>
+
+<div class="drapes" aria-hidden="true">
+  <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="dA" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#E8724A" />
+        <stop offset="45%" stop-color="#F09B76" />
+        <stop offset="100%" stop-color="#F8CDB4" />
+      </linearGradient>
+      <linearGradient id="dB" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#3AAE96" />
+        <stop offset="45%" stop-color="#7FCDBA" />
+        <stop offset="100%" stop-color="#BCE7DC" />
+      </linearGradient>
+      <!-- ombra trasversale: scura ai bordi, chiara al centro: da' il volume -->
+      <linearGradient id="volume" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%"   stop-color="#5A3320" stop-opacity=".30" />
+        <stop offset="34%"  stop-color="#5A3320" stop-opacity="0" />
+        <stop offset="62%"  stop-color="#FFFFFF" stop-opacity=".38" />
+        <stop offset="100%" stop-color="#5A3320" stop-opacity=".22" />
+      </linearGradient>
+    </defs>
+
+    <path id="drapeA" fill="url(#dA)" d="M2.4 -6 C 1.0 16, 3.8 34, 2.2 54 C 0.6 76, 3.4 94, 1.2 108 L5.6 108 C 7.4 94, 5.0 76, 6.0 54 C 7.6 34, 5.2 16, 4.0 -6 Z">
+      <animate attributeName="d" dur="11s" repeatCount="indefinite"
+        calcMode="spline" keyTimes="0;0.5;1"
+        keySplines="0.42 0 0.58 1; 0.42 0 0.58 1"
+        values="M2.4 -6 C 1.0 16, 3.8 34, 2.2 54 C 0.6 76, 3.4 94, 1.2 108 L5.6 108 C 7.4 94, 5.0 76, 6.0 54 C 7.6 34, 5.2 16, 4.0 -6 Z;
+                M2.4 -6 C 3.8 16, 1.2 34, 4.8 54 C 6.8 76, 2.0 94, 3.6 108 L8.0 108 C 9.4 94, 7.2 76, 8.6 54 C 5.4 34, 8.4 16, 4.0 -6 Z;
+                M2.4 -6 C 1.0 16, 3.8 34, 2.2 54 C 0.6 76, 3.4 94, 1.2 108 L5.6 108 C 7.4 94, 5.0 76, 6.0 54 C 7.6 34, 5.2 16, 4.0 -6 Z" />
+    </path>
+    <use href="#drapeA" fill="url(#volume)" />
+
+    <path id="drapeB" fill="url(#dB)" d="M7.8 -6 C 9.2 16, 6.4 36, 8.4 56 C 10.2 78, 7.0 94, 9.0 108 L12.6 108 C 10.8 94, 13.6 78, 11.6 56 C 9.4 36, 12.4 16, 9.2 -6 Z">
+      <animate attributeName="d" dur="14s" repeatCount="indefinite"
+        calcMode="spline" keyTimes="0;0.5;1"
+        keySplines="0.42 0 0.58 1; 0.42 0 0.58 1"
+        values="M7.8 -6 C 9.2 16, 6.4 36, 8.4 56 C 10.2 78, 7.0 94, 9.0 108 L12.6 108 C 10.8 94, 13.6 78, 11.6 56 C 9.4 36, 12.4 16, 9.2 -6 Z;
+                M7.8 -6 C 6.2 16, 9.8 36, 6.2 56 C 4.2 78, 9.8 94, 6.6 108 L10.2 108 C 12.6 94, 7.4 78, 9.4 56 C 12.8 36, 9.8 16, 9.2 -6 Z;
+                M7.8 -6 C 9.2 16, 6.4 36, 8.4 56 C 10.2 78, 7.0 94, 9.0 108 L12.6 108 C 10.8 94, 13.6 78, 11.6 56 C 9.4 36, 12.4 16, 9.2 -6 Z" />
+    </path>
+    <use href="#drapeB" fill="url(#volume)" />
+  </svg>
+</div>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">Annalisa Bignami</a>
+    <nav class="nav">
+      <a href="#discipline">Corsi</a>
+      <a href="#benefici" class="hide-sm">Benefici</a>
+      <a href="#chi-sono" class="hide-sm">Chi sono</a>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <a href="#palestre" class="hide-sm">Per le palestre</a>
+      <a href="#eventi" class="hide-sm">Organizza un evento</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow reveal">Milano · Morbegno · Lombardia</p>
+        <h1 class="display reveal">
+          Il corpo impara
+          <span class="mark">più in fretta</span>
+          di quanto credi
+        </h1>
+        <p class="lede reveal">
+          Insegno tessuti aerei, cerchio e preparazione fisica a chi non ha mai
+          praticato nulla di simile. Non serve essere flessibili, forti o giovani
+          per iniziare: serve qualcuno che costruisca i passaggi nell'ordine giusto.
+        </p>
+        <div class="actions reveal">
+          <a class="btn btn-solid" href="#contatti">Prenota una prova</a>
+          <a class="btn btn-ghost" href="#palestre">Sono una palestra</a>
+        </div>
+        <p class="hero-note reveal">
+          <span class="dot"></span>
+          <span>Milano, Morbegno e Lombardia · <b>prima lezione di prova gratuita</b></span>
+        </p>
+      </div>
+
+      <div class="medallion-wrap reveal">
+      <div class="medallion">
+        <!-- Inquadratura calcolata: ruotando, la figura descrive un cerchio di raggio ~110
+             attorno alla presa (200,132); con la discesa serve un raggio utile di ~147,
+             quindi 294 di lato centrati sul perno. -->
+        <svg viewBox="42 -24 318 318" role="img"
+             aria-label="Silhouette di un'acrobata che esegue una discesa in spaccata sui tessuti aerei">
+          <defs>
+            <linearGradient id="gA" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#F7AC92" />
+              <stop offset="46%" stop-color="#EE8763" />
+              <stop offset="100%" stop-color="#D9744F" />
+            </linearGradient>
+            <linearGradient id="gB" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#9BDCCD" />
+              <stop offset="46%" stop-color="#6FC6B3" />
+              <stop offset="100%" stop-color="#51AC98" />
+            </linearGradient>
+            <linearGradient id="gFold" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="rgba(51,33,28,0.20)" />
+              <stop offset="100%" stop-color="rgba(51,33,28,0)" />
+            </linearGradient>
+            <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="3" dy="6" stdDeviation="5" flood-color="#8A4426" flood-opacity="0.18" />
+            </filter>
+          </defs>
+          <g id="rig" filter="url(#soft)">
+            <path fill="url(#gA)"
+                  d="M184 -50 C 182 34, 172 92, 176 140 C 181 198, 190 274, 176 450
+                     L 202 450 C 210 274, 197 198, 192 140 C 188 92, 197 34, 195 -50 Z" />
+            <path fill="url(#gFold)"
+                  d="M184 -50 C 182 34, 172 92, 176 140 C 181 198, 190 274, 176 450
+                     L 186 450 C 197 274, 187 198, 183 140 C 179 92, 188 34, 190 -50 Z" />
+            <path class="crease" d="M190 -30 C 188 40, 179 94, 184 142 C 189 200, 198 274, 187 430" />
+            <path fill="url(#gB)"
+                  d="M205 -50 C 207 38, 217 96, 213 144 C 208 202, 211 276, 222 450
+                     L 246 450 C 233 276, 229 202, 224 144 C 220 96, 216 38, 216 -50 Z" />
+            <path fill="url(#gFold)"
+                  d="M205 -50 C 207 38, 217 96, 213 144 C 208 202, 211 276, 222 450
+                     L 232 450 C 220 276, 218 202, 218 144 C 214 96, 210 38, 210 -50 Z" />
+            <path class="crease" d="M211 -30 C 213 42, 222 98, 218 146 C 213 204, 216 276, 227 430" />
+            <g id="aerialist">
+              <path class="limb arm" d="M194 152 C 190 144, 186 137, 184 130" />
+              <path class="limb arm" d="M206 152 C 210 144, 214 137, 216 130" />
+              <path class="limb torso" d="M200 154 L 200 188" />
+              <circle class="head" cx="200" cy="146" r="7.5" />
+              <g id="legA"><path class="limb leg" d="M200 188 C 193 206, 186 218, 176 232" /></g>
+              <g id="legB"><path class="limb leg" d="M200 188 C 212 200, 222 214, 232 236" /></g>
+            </g>
+          </g>
+        </svg>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="ribbon-break" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 46 C 200 8, 400 62, 600 34 C 800 8, 1000 56, 1200 26" stroke="#EE8763" />
+    <path d="M0 58 C 220 24, 420 70, 620 46 C 820 22, 1020 66, 1200 40" stroke="#6FC6B3" opacity=".8" />
+  </svg>
+
+  <section id="percorsi" class="tint-pesca">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Per chi</p>
+        <h2 class="display">Quattro modi di incontrarmi</h2>
+        <p class="lede">
+          Che tu voglia provare, accompagnare tuo figlio, portare una disciplina
+          nuova nella tua struttura o riempire una serata: si parte sempre da una
+          prova dal vivo.
+        </p>
+      </div>
+
+      <div class="paths">
+        <article class="path reveal">
+          <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-silk" /></svg></span>
+          <p class="who">Vuoi provare</p>
+          <h3>Lezioni per adulti</h3>
+          <p>
+            Individuali o in piccolo gruppo. Si comincia dalle salite base o
+            dall'amaca, e quasi tutti alla prima lezione staccano i piedi da terra.
+          </p>
+          <a class="go" href="#discipline">Vedi i corsi</a>
+        </article>
+
+        <article class="path reveal">
+          <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-juggle" /></svg></span>
+          <p class="who">Hai figli</p>
+          <h3>Circo e movimento dai 6 anni</h3>
+          <p>
+            Giocoleria, acro-sport e attrezzi aerei bassi. Si costruisce
+            coordinazione divertendosi, sempre sopra i materassini.
+          </p>
+          <a class="go" href="#discipline">Vedi i corsi</a>
+        </article>
+
+        <article class="path reveal">
+          <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-gym" /></svg></span>
+          <p class="who">Hai una struttura</p>
+          <h3>Corsi in palestra</h3>
+          <p>
+            Porto tessuti, amaca e corsi di mobilit&agrave; dove ci sono soffitti alti e
+            fasce orarie da riempire. Attrezzatura mia, sopralluogo prima di ogni accordo.
+          </p>
+          <a class="go" href="#palestre">Come funziona</a>
+        </article>
+
+        <article class="path reveal">
+          <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-stage" /></svg></span>
+          <p class="who">Organizzi un evento</p>
+          <h3>Performance dal vivo</h3>
+          <p>
+            Numeri aerei per feste, inaugurazioni e serate aziendali: da sola o in
+            duo, con attrezzatura certificata e verifica degli ancoraggi.
+          </p>
+          <a class="go" href="#eventi">Come funziona</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <svg class="ribbon-break" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 30 C 220 62, 400 10, 620 38 C 840 64, 1010 16, 1200 44" stroke="#F2C57C" />
+    <path d="M0 44 C 200 74, 420 22, 640 50 C 860 76, 1030 30, 1200 56" stroke="#EDA2B1" opacity=".75" />
+  </svg>
+
+  <section id="discipline" class="tint-menta">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Discipline</p>
+        <h2 class="display">Cosa insegno</h2>
+        <p class="lede">
+          Sei corsi disposti come si sta sul telo: in alto quelli sospesi, in basso
+          quelli a terra. Quasi tutti si possono cominciare senza alcuna esperienza.
+        </p>
+      </div>
+
+      <div class="course-band reveal">
+        <span class="band-label aria">In aria</span>
+        <span class="band-rule" aria-hidden="true"></span>
+        <span class="band-note">si lavora sospesi all'attrezzo</span>
+      </div>
+      <div class="course-row">
+        <article class="disc reveal">
+          <header class="disc-head">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-silk" /></svg></span>
+            <div>
+              <h3>Tessuti e cerchio aereo</h3>
+              <ul class="audience"><li class="ad">Adulti</li><li class="ra">Ragazzi</li></ul>
+            </div>
+          </header>
+          <p>Si sale, ci si avvolge, si scende in controllo. La disciplina pi&ugrave; completa: forza, mobilit&agrave; e un po' di teatro.</p>
+          <ul class="ticks compact">
+            <li>Salite, chiavi, avvolgimenti e discese</li>
+            <li>Forza di presa e tenuta del centro</li>
+            <li>Sequenze coreografiche quando le basi tengono</li>
+          </ul>
+          <p class="meta">Livelli base, intermedio e avanzato</p>
+        </article>
+        <article class="disc reveal">
+          <header class="disc-head">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-hammock" /></svg></span>
+            <div>
+              <h3>Amaca aerea</h3>
+              <ul class="audience"><li class="ad">Adulti</li><li class="se">Senior</li></ul>
+            </div>
+          </header>
+          <p>Il telo chiuso ad anello regge il peso al posto tuo: si lavora seduti e sospesi, senza dover tenere una presa.</p>
+          <ul class="ticks compact">
+            <li>Mai appesi per le mani</li>
+            <li>Tonificazione dolce e schiena decompressa</li>
+            <li>Da qui si passa ai tessuti quando te la senti</li>
+          </ul>
+          <p class="meta">Nessuna esperienza richiesta</p>
+        </article>
+        <article class="disc reveal">
+          <header class="disc-head">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-dumbbell" /></svg></span>
+            <div>
+              <h3>Aerial fitness</h3>
+              <ul class="audience"><li class="ad">Adulti</li></ul>
+            </div>
+          </header>
+          <p>Il tessuto come attrezzo, non come palcoscenico: si tonifica e si guadagna mobilit&agrave;, senza figure da imparare.</p>
+          <ul class="ticks compact">
+            <li>Elastici, pesi leggeri e spalliera</li>
+            <li>Total body, oppure core, braccia e schiena</li>
+            <li>Utile anche a chi pratica altri sport</li>
+          </ul>
+          <p class="meta">Uomini e donne &middot; a corpo libero e sospesi</p>
+        </article>
+      </div>
+
+      <svg class="ribbon-break tight" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 30 C 150 4, 330 56, 520 28 C 700 2, 880 54, 1060 26 C 1120 16, 1170 20, 1200 24" stroke="#EE8763" />
+        <path d="M0 44 C 160 20, 340 70, 530 42 C 710 16, 890 68, 1070 40 C 1130 30, 1175 34, 1200 38" stroke="#6FC6B3" opacity=".75" />
+      </svg>
+
+      <div class="course-band reveal">
+        <span class="band-label terra">A terra</span>
+        <span class="band-rule" aria-hidden="true"></span>
+        <span class="band-note">si lavora sul tappeto, senza salire</span>
+      </div>
+      <div class="course-row">
+        <article class="disc reveal">
+          <header class="disc-head">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-child" /></svg></span>
+            <div>
+              <h3>Movimento creativo</h3>
+              <ul class="audience"><li class="ba">Bambini</li></ul>
+            </div>
+          </header>
+          <p>Attrezzi bassi sopra i materassini: non &egrave; acrobatica in miniatura, &egrave; esplorare cosa sa fare il proprio corpo.</p>
+          <ul class="ticks compact">
+            <li>Si impara a cadere prima che a salire</li>
+            <li>Coordinazione, equilibrio, senso dello spazio</li>
+            <li>Nessuna competizione tra bambini</li>
+          </ul>
+          <p class="meta">Dai 6 anni &middot; gruppi divisi per et&agrave;</p>
+        </article>
+        <article class="disc reveal">
+          <header class="disc-head">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-stretch" /></svg></span>
+            <div>
+              <h3>Flessibilit&agrave; e mobilit&agrave;</h3>
+              <ul class="audience"><li class="ad">Adulti</li><li class="se">Senior</li></ul>
+            </div>
+          </header>
+          <p>Tutto a terra: spalle, anche e colonna, con allungamento attivo e forza funzionale. &Egrave; il lavoro del Master FIF.</p>
+          <ul class="ticks compact">
+            <li>Allungamento attivo, non stretching passivo</li>
+            <li>Movimenti dolci e guidati per chi parte rigido</li>
+            <li>Esercizi che si possono rifare a casa</li>
+          </ul>
+          <p class="meta">Individuale o in coppia</p>
+        </article>
+        <article class="disc reveal">
+          <header class="disc-head">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-juggle" /></svg></span>
+            <div>
+              <h3>Circus lab</h3>
+              <ul class="audience"><li class="ba">Bambini</li><li class="ra">Ragazzi</li></ul>
+            </div>
+          </header>
+          <p>Giocoleria, acro-sport e un piccolo spettacolo finale costruito insieme e mostrato ai genitori.</p>
+          <ul class="ticks compact">
+            <li>Palline, hula-hoop e clavette</li>
+            <li>Acro-sport: si impara a fidarsi dei compagni</li>
+            <li>Saggio finale con numeri propri</li>
+          </ul>
+          <p class="meta">Dai 6 anni &middot; laboratori, camp e corsi</p>
+        </article>
+      </div>
+
+      <div class="promise reveal">
+        <div class="promise-item">
+          <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-shield" /></svg></span>
+          <div><b>Attrezzatura certificata</b><span>Teli, amaca, cerchio e moschettoni revisionati, forniti da me</span></div>
+        </div>
+        <div class="promise-item">
+          <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-group" /></svg></span>
+          <div><b>Gruppi piccoli e omogenei</b><span>Divisi per et&agrave; e livello, cos&igrave; vedo ogni movimento</span></div>
+        </div>
+        <div class="promise-item">
+          <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-clock" /></svg></span>
+          <div><b>Si comincia con una prova</b><span>Una lezione singola prima di scegliere un percorso</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tint-panna" id="benefici">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Benefici</p>
+        <h2 class="display">Cosa cambia, davvero</h2>
+        <p class="lede">
+          Non prometto trasformazioni. Questi per&ograve; sono gli effetti che vedo pi&ugrave;
+          spesso in chi pratica con costanza, qualunque sia il corso scelto.
+        </p>
+      </div>
+
+      <div class="benefits">
+        <div class="benefit reveal">
+          <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-spine" /></svg></span>
+          <h3>Schiena decompressa</h3>
+          <p>Stare sospesi allontana le vertebre invece di comprimerle: &egrave; la differenza che si sente prima di tutte.</p>
+        </div>
+        <div class="benefit reveal">
+          <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-stretch" /></svg></span>
+          <h3>Pi&ugrave; mobilit&agrave; e flessibilit&agrave;</h3>
+          <p>Le articolazioni recuperano ampiezza di movimento che avevano smesso di usare.</p>
+        </div>
+        <div class="benefit reveal">
+          <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-posture" /></svg></span>
+          <h3>Postura migliore</h3>
+          <p>Reggersi in aria richiede la muscolatura profonda, la stessa che tiene su la schiena da seduti.</p>
+        </div>
+        <div class="benefit reveal">
+          <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-balance" /></svg></span>
+          <h3>Coordinazione ed equilibrio</h3>
+          <p>Il corpo impara a riconoscere la propria posizione anche a testa in gi&ugrave;.</p>
+        </div>
+        <div class="benefit reveal">
+          <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-relax" /></svg></span>
+          <h3>Meno tensioni muscolari</h3>
+          <p>Collo, spalle e zona lombare si sciolgono: sono i punti dove si deposita la giornata.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="chi-sono" class="tint-sole">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Chi sono</p>
+        <h2 class="display">Annalisa Bignami</h2>
+        <p class="lede">
+          Ho iniziato dal palco: festival di strada, spettacoli per i comuni, una
+          tourn&eacute;e itinerante di tessuti aerei. Il pubblico mi ha insegnato la
+          presenza, ma &egrave; insegnando che ho capito cosa mi interessa davvero: il
+          momento in cui qualcuno capisce un movimento.
+        </p>
+      </div>
+
+      <blockquote class="statement reveal">
+        &laquo;Io non sono portata&raquo; &egrave; la frase che sento pi&ugrave; spesso.
+        Quasi mai &egrave; vera: <em>manca l'allenamento, non il talento.</em>
+      </blockquote>
+
+      <div class="figures reveal">
+        <div class="fig"><b data-to="5" data-suffix="+">5+</b><span>anni tra palco e insegnamento</span></div>
+        <div class="fig"><b data-to="2">2</b><span>discipline aeree: tessuti e cerchio</span></div>
+        <div class="fig"><b data-to="5" data-prefix="0&rarr;">0&rarr;5</b><span>dal primo giorno ai livelli avanzati</span></div>
+      </div>
+
+      <div class="bio-grid">
+        <div class="bio-card reveal">
+          <p class="side-title">Formazione</p>
+          <div class="cred">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-stretch" /></svg></span>
+            <b>Master in Flexibility</b>
+            <span class="year">2025</span>
+            <span class="issuer">FIF &mdash; Federazione Italiana Fitness</span>
+          </div>
+          <div class="cred">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-diploma" /></svg></span>
+            <b>Acrobatica Aerea, I e II livello</b>
+            <span class="year">2023</span>
+            <span class="issuer">AIDA &mdash; Accademia Italiana Danza Aerea</span>
+          </div>
+          <div class="cred">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-globe" /></svg></span>
+            <b>Scienze Linguistiche</b>
+            <span class="year">2020</span>
+            <span class="issuer">Universit&agrave; Cattolica &middot; inglese e spagnolo C1</span>
+          </div>
+        </div>
+
+        <div class="bio-card reveal">
+          <p class="side-title">Con chi lavoro</p>
+          <ul class="ticks compact">
+            <li>Adulti che non hanno mai fatto sport aereo</li>
+            <li>Bambini e ragazzi dai 6 anni</li>
+            <li>Adulti senior che vogliono tornare a muoversi</li>
+            <li>Ex ginnaste e danzatrici che riprendono</li>
+            <li>Allievi in preparazione a saggi e gare</li>
+          </ul>
+        </div>
+
+        <div class="bio-card reveal">
+          <p class="side-title">Dove mi trovi</p>
+          <div class="place-row">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-gym" /></svg></span>
+            <div><b>Zero Gravity Milano</b><span>Corsi individuali e di gruppo, dal 2021</span></div>
+          </div>
+          <div class="place-row">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-pin" /></svg></span>
+            <div><b>Morbegno</b><span>Corsi in avvio, dove le discipline aeree non ci sono</span></div>
+          </div>
+          <div class="place-row">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-globe" /></svg></span>
+            <div><b>E dove serve</b><span>Corsi ed eventi anche fuori zona: mi sposto volentieri</span></div>
+          </div>
+          <p class="side-note">
+            Insegno anche in <b>inglese e spagnolo</b>: utile a chi si &egrave; appena
+            trasferito e cerca un corso senza barriere di lingua.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="domande" class="tint-rosa">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Prima di iniziare</p>
+        <h2 class="display">Le domande che mi fanno tutti</h2>
+      </div>
+
+      <div class="faq reveal">
+        <details class="qa">
+          <summary>Non sono per niente flessibile. Posso comunque provare?</summary>
+          <p>
+            Sì, ed è il caso più comune. La flessibilità è una conseguenza del
+            lavoro, non un requisito d'ingresso: le figure iniziali richiedono più
+            tenuta che apertura. Chi parte rigido nota i primi cambiamenti nel
+            giro di un mese.
+          </p>
+        </details>
+        <details class="qa">
+          <summary>Ho paura dell'altezza.</summary>
+          <p>
+            Si lavora a un metro da terra per parecchie lezioni, e si sale solo
+            quando il movimento è automatico. La paura dell'altezza quasi sempre è
+            paura di non avere il controllo: quando il corpo sa cosa fare, sparisce
+            da sola.
+          </p>
+        </details>
+        <details class="qa">
+          <summary>Che età serve? C'è un limite?</summary>
+          <p>
+            Dai 6 anni in su per i percorsi bambini, senza limite superiore per gli
+            adulti: ho allieve che hanno iniziato dopo i cinquanta. Ciò che cambia
+            non è l'età ma il ritmo della progressione.
+          </p>
+        </details>
+        <details class="qa">
+          <summary>Quanto tempo prima di riuscire a fare qualcosa di bello?</summary>
+          <p>
+            Una figura fotografabile arriva in genere tra la terza e la quinta
+            lezione. Non è marketing: i tessuti restituiscono soddisfazione presto,
+            ed è il motivo per cui chi inizia tende a continuare.
+          </p>
+        </details>
+        <details class="qa">
+          <summary>Cosa devo portare?</summary>
+          <p>
+            Leggings lunghi e maglietta che copra le ascelle — il tessuto scivola
+            sulla pelle nuda e può bruciare. Niente scarpe, niente gioielli, unghie
+            corte. Il resto lo fornisco io.
+          </p>
+        </details>
+        <details class="qa">
+          <summary>Dove si tengono le lezioni?</summary>
+          <p>
+            A Milano, dove insegno da anni, e a Morbegno, dove sto avviando i corsi
+            continuativi. Nel resto della Lombardia valutiamo insieme trasferta e
+            requisiti tecnici, caso per caso: per performance e workshop intensivi
+            mi sposto volentieri.
+          </p>
+        </details>
+      </div>
+
+      <p class="faq-out reveal">
+        Non hai trovato la tua domanda?
+        <a href="mailto:annalisabignami439@gmail.com">Scrivimi, rispondo io.</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="palestre" class="tint-menta">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Per le palestre</p>
+        <h2 class="display">Il vostro soffitto è uno spazio inutilizzato</h2>
+        <p class="lede">
+          Le discipline aeree attirano un pubblico che il fitness tradizionale non
+          intercetta: adulti che si annoiano in sala pesi, ex ginnaste, famiglie.
+          E occupano le ore morte del pomeriggio, non quelle di punta.
+        </p>
+      </div>
+
+      <div class="split">
+        <div class="panel reveal">
+          <h3>Perché conviene</h3>
+          <ul class="ticks">
+            <li><b>Attira chi non entrerebbe.</b> È un corso che in zona quasi nessuno offre: si iscrive gente che non cercava una palestra.</li>
+            <li><b>Fidelizza più del fitness classico.</b> Un percorso a livelli dà un motivo per restare mesi, non settimane.</li>
+            <li><b>Valorizza spazi già pagati.</b> Altezza disponibile e fasce orarie vuote diventano ricavo.</li>
+            <li><b>Si comincia senza impegno.</b> Si parte con un open day e una classe pilota; si struttura solo se i numeri tornano.</li>
+          </ul>
+        </div>
+
+        <div class="panel reveal">
+          <h3>Cosa serve alla struttura</h3>
+          <ul class="ticks">
+            <li>Almeno <b>4,5–5 metri</b> di altezza libera sotto il punto di aggancio.</li>
+            <li>Un ancoraggio <b>certificato per carichi dinamici</b> — se non c'è, valutiamo un traliccio autoportante.</li>
+            <li>Materassini di sicurezza sotto ogni postazione.</li>
+            <li>Una fascia oraria dedicata, anche solo <b>una o due volte a settimana</b>.</li>
+            <li>Tessuti, cerchio e moschettoni <b>li porto io</b>, certificati e revisionati.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="steps reveal">
+        <div class="stepcard">
+          <span class="num">01</span>
+          <h3>Sopralluogo</h3>
+          <p>Vengo a vedere altezze e ancoraggi. Gratuito: se lo spazio non è adatto ve lo dico subito.</p>
+        </div>
+        <div class="stepcard">
+          <span class="num">02</span>
+          <h3>Open day</h3>
+          <p>Una lezione prova aperta ai vostri iscritti: fa vedere la disciplina e misura l'interesse reale.</p>
+        </div>
+        <div class="stepcard">
+          <span class="num">03</span>
+          <h3>Classe pilota</h3>
+          <p>Un ciclo breve a numero chiuso, in una fascia concordata. Da qui si capisce se il corso regge.</p>
+        </div>
+        <div class="stepcard">
+          <span class="num">04</span>
+          <h3>A regime</h3>
+          <p>Livelli paralleli, saggio di fine anno e, se ha senso, una seconda disciplina.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="ribbon-break" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 40 C 180 10, 380 60, 600 32 C 820 6, 1020 54, 1200 24" stroke="#EE8763" />
+    <path d="M0 54 C 200 26, 400 72, 620 46 C 840 20, 1040 66, 1200 38" stroke="#F2C57C" opacity=".75" />
+  </svg>
+
+  <section id="eventi">
+    <div class="stage-light" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Eventi e spettacoli</p>
+        <h2 class="display">Cinque minuti che <span class="mark">tutti raccontano</span></h2>
+        <p class="lede">
+          Quando le luci si abbassano e qualcuno sale su un telo a cinque metri da
+          terra, la sala smette di parlare. &Egrave; l'effetto che porto a feste,
+          inaugurazioni, serate aziendali e manifestazioni.
+        </p>
+      </div>
+
+      <div class="show-cards">
+          <article class="show reveal">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-stage" /></svg></span>
+            <h3>Feste private</h3>
+            <p>Compleanni, anniversari, matrimoni</p>
+          </article>
+          <article class="show reveal">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-gym" /></svg></span>
+            <h3>Inaugurazioni</h3>
+            <p>Locali, negozi, palestre</p>
+          </article>
+          <article class="show reveal">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-group" /></svg></span>
+            <h3>Eventi aziendali</h3>
+            <p>Cene, convention, feste di fine anno</p>
+          </article>
+          <article class="show reveal">
+            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-juggle" /></svg></span>
+            <h3>Manifestazioni</h3>
+            <p>Feste di piazza, festival, sagre</p>
+          </article>
+      </div>
+    </div>
+
+    <div class="marquee" aria-label="Dove ho gi&agrave; portato un numero">
+      <div class="marquee-track">
+        <span>Compagnia Daiana Orfei</span><span aria-hidden="true">&#9733;</span>
+        <span>Milano Clown Festival</span><span aria-hidden="true">&#9733;</span>
+        <span>Fabbrica del Vapore</span><span aria-hidden="true">&#9733;</span>
+        <span>Comune di Milano</span><span aria-hidden="true">&#9733;</span>
+        <span>Comune di Bergamo</span><span aria-hidden="true">&#9733;</span>
+        <span>Hotel Hilton</span><span aria-hidden="true">&#9733;</span>
+        <span>Compagnia Daiana Orfei</span><span aria-hidden="true">&#9733;</span>
+        <span>Milano Clown Festival</span><span aria-hidden="true">&#9733;</span>
+        <span>Fabbrica del Vapore</span><span aria-hidden="true">&#9733;</span>
+        <span>Comune di Milano</span><span aria-hidden="true">&#9733;</span>
+        <span>Comune di Bergamo</span><span aria-hidden="true">&#9733;</span>
+        <span>Hotel Hilton</span><span aria-hidden="true">&#9733;</span>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="actions center reveal">
+        <a class="btn btn-solid" href="mailto:annalisabignami439@gmail.com">Chiedi un preventivo</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contatti" class="contact">
+    <div class="wrap">
+      <p class="eyebrow reveal">Parliamone</p>
+      <h2 class="display reveal">Il primo passo è <span class="mark">una prova</span></h2>
+      <p class="lede reveal">
+        Scrivimi cosa ti interessa — una lezione, un corso da avviare, una serata
+        da riempire — e ti rispondo con una proposta concreta, non con un listino.
+      </p>
+      <div class="lines reveal">
+        <a href="tel:+393518007626"><svg class="ico" aria-hidden="true"><use href="#ico-phone" /></svg>+39 351 800 7626</a>
+        <a href="mailto:annalisabignami439@gmail.com"><svg class="ico" aria-hidden="true"><use href="#ico-mail" /></svg>annalisabignami439@gmail.com</a>
+        <span><svg class="ico" aria-hidden="true"><use href="#ico-pin" /></svg>Milano · Morbegno · Lombardia</span>
+      </div>
+      <div class="actions reveal">
+        <a class="btn btn-solid" href="mailto:annalisabignami439@gmail.com">Scrivimi una mail</a>
+        <a class="btn btn-ghost" href="tel:+393518007626">Chiamami</a>
+      </div>
+
+      <ol class="after reveal">
+        <li>
+          <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-mail" /></svg></span>
+          <b>Mi scrivi</b>
+          <span>Due righe su cosa ti interessa e in che giorni puoi</span>
+        </li>
+        <li>
+          <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-phone" /></svg></span>
+          <b>Ci sentiamo</b>
+          <span>Rispondo presto e ti propongo un orario</span>
+        </li>
+        <li>
+          <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-silk" /></svg></span>
+          <b>Provi</b>
+          <span>Una lezione singola, poi decidi se proseguire</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Annalisa Bignami · Discipline aeree e movimento</span>
+    <span>Milano &middot; Morbegno &middot; Lombardia</span>
+  </div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('.reveal');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    items.forEach(el => el.classList.add('on'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (!e.isIntersecting) return;
+        e.target.style.transitionDelay = (i * 60) + 'ms';
+        e.target.classList.add('on');
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '-6% 0px -10%' });
+    items.forEach(el => io.observe(el));
+  }
+
+  // filo di avanzamento in cima alla pagina
+  const barra = document.getElementById('progress');
+  const aggiornaBarra = () => {
+    const h = document.documentElement;
+    const quota = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+    barra.style.transform = 'scaleX(' + Math.min(1, Math.max(0, quota)) + ')';
+  };
+  aggiornaBarra();
+  addEventListener('scroll', aggiornaBarra, { passive: true });
+
+  // evidenzia nel menu la sezione che si sta leggendo
+  const voci = [...document.querySelectorAll('.nav a[href^="#"]:not(.nav-pill)')];
+  const bersagli = voci.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if (bersagli.length) {
+    const spia = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        voci.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      });
+    }, { rootMargin: '-45% 0px -50%' });
+    bersagli.forEach(t => spia.observe(t));
+  }
+
+  // i numeri salgono quando entrano in campo
+  const cifre = document.querySelectorAll('.fig b[data-to]');
+  const animaCifra = (el) => {
+    const meta = parseInt(el.dataset.to, 10);
+    const prefisso = el.dataset.prefix || '';
+    const suffisso = el.dataset.suffix || '';
+    const durata = 900;
+    const avvio = performance.now();
+    const passo = (ora) => {
+      const t = Math.min(1, (ora - avvio) / durata);
+      const morbido = 1 - Math.pow(1 - t, 3);
+      el.textContent = prefisso + Math.round(meta * morbido) + suffisso;
+      if (t < 1) requestAnimationFrame(passo);
+    };
+    requestAnimationFrame(passo);
+  };
+  if (cifre.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const occhio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        animaCifra(e.target);
+        occhio.unobserve(e.target);
+      });
+    }, { rootMargin: '-10% 0px -10%' });
+    cifre.forEach(c => occhio.observe(c));
+  }
+
+</script>

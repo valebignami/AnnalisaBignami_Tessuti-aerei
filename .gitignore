@@ -1,0 +1,14 @@
+# Materiale di lavoro, non fa parte del sito.
+# Resta sul computer: su un repository pubblico sarebbe scaricabile da chiunque.
+*.pdf
+*.pptx
+*.docx
+
+# Video e gif: pesanti e per ora non usati nel sito
+*.gif
+*.mp4
+
+# Roba di sistema
+Thumbs.db
+desktop.ini
+.DS_Store
