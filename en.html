@@ -84,7 +84,7 @@
   /* scroll-padding: senza, il titolo della sezione a cui punta il menu finisce
      nascosto dietro la barra fissa. Sul telefono la barra e' su due righe. */
   html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-  @media (max-width: 1040px) { html { scroll-padding-top: 7.5rem; } }
+  @media (max-width: 1200px) { html { scroll-padding-top: 7.5rem; } }
 
   /* salto diretto al contenuto, per chi naviga da tastiera o con lo screen reader */
   .skip {
@@ -175,12 +175,10 @@
     font-size: 0.92rem; font-weight: 700; letter-spacing: 0.16em;
     text-transform: uppercase; text-decoration: none; white-space: nowrap;
   }
-  /* piccolo nastro al posto del segno di spunta */
-  .brand::before {
-    content: ""; width: 8px; height: 26px; border-radius: 4px;
-    background: linear-gradient(var(--mandarino), var(--lampone));
-  }
-  .nav { display: flex; gap: clamp(0.8rem, 2.1vw, 1.7rem);
+  /* al posto del nastro anonimo: una figurina stilizzata sospesa a due teli,
+     un coral e un acqua come i teli del medaglione. Riconoscibile anche piccola. */
+  .brand-mark { width: 21px; height: 28px; display: block; flex: none; }
+  .nav { display: flex; gap: clamp(0.7rem, 1.7vw, 1.35rem);
          font-size: 0.86rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; }
   .nav a { text-decoration: none; color: var(--fg-mid); white-space: nowrap;
            padding-bottom: 3px; border-bottom: 2px solid transparent; }
@@ -193,7 +191,7 @@
      La soglia e' 1040 e non 820: con il menu ingrandito le sei voci in fila
      chiedono circa 1010px, e sotto quella misura sfondavano di lato. Misurato,
      non stimato: a 961px la barra sforava ancora di 21px. */
-  @media (max-width: 1040px) {
+  @media (max-width: 1200px) {
     .topbar .wrap {
       flex-direction: column; align-items: stretch;
       gap: 0.5rem; padding-block: 0.7rem 0;
@@ -227,7 +225,7 @@
 
   /* Selettore lingua ITA/ENG. Due link, non un bottone javascript: ogni lingua
      ha una sua pagina e un suo indirizzo. Quello attivo e' pieno di mandarino. */
-  @media (min-width: 1041px) { .nav { margin-left: auto; } }
+  @media (min-width: 1201px) { .nav { margin-left: auto; } }
   .lang-toggle {
     display: inline-flex; align-items: center; gap: 2px; flex: none;
     padding: 3px; border-radius: 999px;
@@ -243,7 +241,7 @@
   .lang-toggle a.on { background: var(--mandarino); color: var(--fg); }
   /* sotto la soglia del menu a striscia la barra e' su due righe: il selettore
      va appoggiato in alto a destra, sulla riga del nome, fuori dal flusso */
-  @media (max-width: 1040px) {
+  @media (max-width: 1200px) {
     .topbar .wrap { position: relative; }
     .lang-toggle { position: absolute; top: 0.5rem; right: 0; }
   }
@@ -651,7 +649,7 @@
     width: 1px; height: 16px; background: var(--line); flex: none;
     align-self: center;
   }
-  @media (max-width: 1040px) { .nav-sep { display: none; } }
+  @media (max-width: 1200px) { .nav-sep { display: none; } }
 
   /* etichette del pubblico: dicono a chi si rivolge il corso, non decorano */
   .audience {
@@ -1250,7 +1248,12 @@
 <div class="progress" id="progress" aria-hidden="true"></div>
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="#top">Annalisa Bignami</a>
+    <a class="brand" href="#top"><svg class="brand-mark" viewBox="0 0 22 30" fill="none" aria-hidden="true">
+      <path d="M6.5 1 C 5 8, 8 15, 6 22 C 5 26, 5.5 28, 6 29" stroke="#EE8763" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M15.5 1 C 17 8, 14 15, 16 22 C 17 26, 16.5 28, 16 29" stroke="#6FC6B3" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="11" cy="12.4" r="2.1" fill="#33211C"/>
+      <path d="M11 14.5 L 11 19.4 M11 15.3 L 7 12 M11 15.3 L 15 12 M11 19.4 L 8.7 24.4 M11 19.4 L 13.3 24.4" stroke="#33211C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>Annalisa Bignami</a>
     <nav class="nav" aria-label="Site sections">
       <a href="#discipline">Classes</a>
       <a href="#benefici">Benefits</a>
