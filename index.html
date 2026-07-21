@@ -937,6 +937,11 @@
   }
   .panel:nth-child(2) .ticks li::before { background: var(--albicocca); }
   .ticks b { color: var(--fg); font-weight: 700; }
+  /* riga di chiusura del pannello palestre, dopo l'elenco */
+  .panel-note {
+    margin: 0.2rem 0 0; padding-top: 1rem; border-top: 1px solid var(--line);
+    font-size: 0.95rem; color: var(--fg-mid);
+  }
 
   /* i quattro passi sono una sequenza reale: la numerazione porta informazione */
   .steps { display: grid; gap: 1rem; margin-top: clamp(1.6rem, 4vw, 2.2rem); }
@@ -1275,7 +1280,8 @@
           di quanto credi
         </h1>
         <p class="lede reveal">
-          Insegno tessuti aerei, cerchio e preparazione fisica. Ho allieve che
+          Insegno discipline aeree — tessuti e cerchio — più tutto quello che ci
+          sta sotto: preparazione, mobilità e movimento a terra. Ho allieve che
           si allenano da 10 anni e allieve che non avevano mai fatto uno sport in
           vita loro: cambia da dove partiamo, non se puoi farcela. Flessibile e
           forte non devi esserlo prima. Lo diventi strada facendo.
@@ -1421,9 +1427,8 @@
         <p class="eyebrow">Discipline</p>
         <h2 class="display">Cosa insegno</h2>
         <p class="lede">
-          Sei corsi, messi in pagina come si sta sul telo: sopra quelli sospesi,
-          sotto quelli a terra. Quasi tutti puoi cominciarli senza aver mai fatto
-          niente del genere.
+          Sei corsi. Prima quelli sospesi all'attrezzo, poi quelli a terra.
+          Quasi tutti puoi cominciarli senza aver mai fatto niente del genere.
         </p>
       </div>
 
@@ -1441,7 +1446,7 @@
               <ul class="audience"><li class="ad">Adulti</li><li class="ra">Ragazzi</li></ul>
             </div>
           </header>
-          <p>Sali, ti avvolgi, scendi tenendo tutto sotto controllo. &Egrave; la pi&ugrave; completa delle sei e chiede tre cose insieme: forza, mobilit&agrave; e un po' di teatro.</p>
+          <p>Sali, ti avvolgi, scendi tenendo tutto sotto controllo. &Egrave; la pi&ugrave; completa delle sei: mette insieme forza, mobilit&agrave; e un po' di teatro.</p>
           <ul class="ticks compact">
             <li>Salite, chiavi, avvolgimenti e discese</li>
             <li>Presa salda e centro che tiene</li>
@@ -1457,7 +1462,7 @@
               <ul class="audience"><li class="ad">Adulti</li><li class="se">Senior</li></ul>
             </div>
           </header>
-          <p>Il telo &egrave; chiuso ad anello e il tuo peso lo regge lui. Lavori seduta o sdraiata dentro, senza dover stringere niente con le mani.</p>
+          <p>Il telo &egrave; chiuso ad anello e ti sostiene con tutto il tuo peso. Lavori seduta o sdraiata dentro, senza doverti aggrappare.</p>
           <ul class="ticks compact">
             <li>Non resti mai appesa per le braccia</li>
             <li>Tonifica piano e lascia respirare la schiena</li>
@@ -1502,7 +1507,7 @@
               <ul class="audience"><li class="ba">Bambini</li></ul>
             </div>
           </header>
-          <p>Attrezzi bassi sopra i materassini. Non &egrave; acrobatica in miniatura, &egrave; scoprire cosa sa gi&agrave; fare il proprio corpo.</p>
+          <p>Attrezzi bassi sopra i materassini. Non &egrave; acrobatica in miniatura: &egrave; scoprire cosa sa gi&agrave; fare il corpo, giocando.</p>
           <ul class="ticks compact">
             <li>Prima imparano a cadere, poi a salire</li>
             <li>Coordinazione, equilibrio, e sapere dove si &egrave;</li>
@@ -1518,7 +1523,7 @@
               <ul class="audience"><li class="ad">Adulti</li><li class="se">Senior</li></ul>
             </div>
           </header>
-          <p>Tutto a terra, su spalle, anche e schiena. Ti allunghi spingendo, non lasciandoti andare: &egrave; il metodo che ho studiato al Master FIF.</p>
+          <p>Tutto a terra, lavorando su spalle, anche e schiena. Ti allunghi spingendo attivamente, non restando fermo in una posizione.</p>
           <ul class="ticks compact">
             <li>Allunghi spingendo, non stando fermo in posizione</li>
             <li>Se parti rigida andiamo piano, e ti guido io</li>
@@ -1534,7 +1539,7 @@
               <ul class="audience"><li class="ba">Bambini</li><li class="ra">Ragazzi</li></ul>
             </div>
           </header>
-          <p>Giocoleria, acro-sport e uno spettacolino finale, costruito insieme e portato davanti ai genitori.</p>
+          <p>Giocoleria, acro-sport e uno spettacolino finale, costruito insieme e messo in scena per i genitori.</p>
           <ul class="ticks compact">
             <li>Palline, hula-hoop e clavette</li>
             <li>Acro-sport, dove impari a fidarti dei compagni</li>
@@ -1567,9 +1572,8 @@
         <p class="eyebrow">Benefici</p>
         <h2 class="display">Cosa cambia, davvero</h2>
         <p class="lede">
-          Non ti prometto trasformazioni. Queste per&ograve; sono le cose che vedo
-          succedere pi&ugrave; spesso a chi viene con una certa costanza, qualunque
-          corso abbia scelto.
+          Non prometto trasformazioni. Queste per&ograve; sono le cose che vedo
+          succedere pi&ugrave; spesso in chi si allena con una certa costanza.
         </p>
       </div>
 
@@ -1581,8 +1585,8 @@
         </div>
         <div class="benefit reveal">
           <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-dumbbell" /></svg></span>
-          <h3>Braccia, schiena e centro pi&ugrave; forti</h3>
-          <p>Ti tiri su con il tuo peso, che &egrave; il modo pi&ugrave; antico che esista di diventare forti. Le braccia e la schiena cambiano in poche settimane, senza aver toccato un bilanciere.</p>
+          <h3>Braccia, schiena e addome pi&ugrave; forti</h3>
+          <p>Ti sollevi con il tuo peso, il modo pi&ugrave; antico che esista di diventare forti. Braccia, schiena e fascia addominale cambiano nel giro di poche settimane, senza aver mai toccato un bilanciere.</p>
         </div>
         <div class="benefit reveal">
           <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-stretch" /></svg></span>
@@ -1614,10 +1618,10 @@
         <p class="eyebrow">Chi sono</p>
         <h2 class="display">Annalisa Bignami</h2>
         <p class="lede">
-          Ho cominciato dal palco: festival di strada, spettacoli per i comuni, una
-          tourn&eacute;e itinerante di tessuti aerei. Poi ho iniziato a insegnare e ho
-          capito che il mestiere che voglio fare &egrave; questo. Quello che mi tiene l&igrave;
-          &egrave; il momento in cui vedo che a qualcuno il movimento &egrave; venuto.
+          Ho iniziato come performer di tessuti aerei: festival, eventi e una lunga
+          tourn&eacute;e in giro per l'Italia. Dal palco sono passata all'insegnamento, e
+          l&igrave; ho capito che era il mestiere che volevo davvero. Quello che mi tiene
+          qui &egrave; il momento in cui vedo che a qualcuno la figura riesce.
         </p>
       </div>
 
@@ -1629,7 +1633,7 @@
       <div class="figures reveal">
         <div class="fig"><b data-to="5" data-suffix="+">5+</b><span>anni tra palco e insegnamento</span></div>
         <div class="fig"><b data-to="2">2</b><span>discipline aeree: tessuti e cerchio</span></div>
-        <div class="fig"><b data-to="5" data-prefix="0&rarr;">0&rarr;5</b><span>dal primo giorno ai livelli avanzati</span></div>
+        <div class="fig"><b data-to="5" data-suffix="&nbsp;livelli">5&nbsp;livelli</b><span>dalla prima salita alle figure avanzate</span></div>
       </div>
 
       <div class="bio-grid">
@@ -1735,8 +1739,8 @@
           <summary>Quanto tempo prima di riuscire a fare qualcosa di bello?</summary>
           <p>
             Una figura da fotografare arriva di solito tra la terza e la quinta
-            lezione. Non te lo dico per venderti il corso: i tessuti danno
-            soddisfazione presto, ed è il motivo per cui chi comincia poi resta.
+            lezione. I tessuti danno soddisfazione presto, ed è il motivo per cui
+            chi comincia poi resta.
           </p>
         </details>
         <details class="qa">
@@ -1777,27 +1781,15 @@
         </p>
       </div>
 
-      <div class="split">
-        <div class="panel reveal">
-          <h3>Perché conviene</h3>
-          <ul class="ticks">
-            <li><b>Porta gente nuova.</b> In zona non lo fa quasi nessuno, e si iscrive chi una palestra non la stava nemmeno cercando.</li>
-            <li><b>Gli iscritti restano più a lungo.</b> Con i livelli c'è sempre una cosa dopo, quindi si ragiona in mesi e non in settimane.</li>
-            <li><b>Usa spazio che pagate già.</b> L'altezza sopra le teste e le ore vuote diventano incasso.</li>
-            <li><b>Non vi legate a niente.</b> Si parte con una giornata di prova e un corso pilota, e si struttura solo se i numeri tornano.</li>
-          </ul>
-        </div>
-
-        <div class="panel reveal">
-          <h3>Cosa serve alla struttura</h3>
-          <ul class="ticks">
-            <li>Almeno <b>4,5–5 metri</b> di altezza libera sotto il punto di aggancio.</li>
-            <li>Un ancoraggio <b>certificato per carichi dinamici</b>. Se non ce l'avete, si guarda un traliccio autoportante.</li>
-            <li>Materassini di sicurezza sotto ogni postazione.</li>
-            <li>Una fascia oraria dedicata, anche solo <b>una o due volte a settimana</b>.</li>
-            <li>Tessuti, cerchio e moschettoni <b>li porto io</b>, certificati e revisionati.</li>
-          </ul>
-        </div>
+      <div class="panel reveal">
+        <h3>Perché conviene</h3>
+        <ul class="ticks">
+          <li><b>Porta persone nuove.</b> In zona non lo propone quasi nessuno, e si iscrive chi una palestra non la stava nemmeno cercando.</li>
+          <li><b>Gli iscritti restano più a lungo.</b> Con i livelli c'è sempre un passo successivo: si ragiona in mesi, non in settimane.</li>
+          <li><b>Sfrutta spazio che pagate già.</b> L'altezza sopra le teste e le ore vuote diventano incasso.</li>
+          <li><b>Non vi vincola a niente.</b> Si parte con una giornata di prova e un corso pilota; si struttura solo se i numeri tornano.</li>
+        </ul>
+        <p class="panel-note">Serve un soffitto alto e un punto dove ancorare, ma se è fattibile ve lo dico io di persona. Tessuti, cerchio e moschettoni li porto e li revisiono io.</p>
       </div>
 
       <div class="steps reveal">
