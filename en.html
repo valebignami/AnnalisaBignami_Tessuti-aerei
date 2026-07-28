@@ -714,6 +714,8 @@
   }
   @media (min-width: 640px) { .course-row { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 1000px) { .course-row { grid-template-columns: repeat(3, 1fr); } }
+  /* on-the-ground row: two classes, same card width as the row above, centred */
+  @media (min-width: 1000px) { .course-row.duo { grid-template-columns: repeat(2, minmax(0, 22rem)); justify-content: center; } }
 
   .course-band {
     display: flex; align-items: center; gap: 0.9rem;
@@ -738,7 +740,7 @@
   .benefits { display: grid; gap: clamp(1.4rem, 3.5vw, 2.2rem); }
   /* tre colonne, non cinque: a cinque le colonne diventano strisce di testo */
   @media (min-width: 620px) { .benefits { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1000px) { .benefits { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1000px) { .benefits { grid-template-columns: repeat(2, 1fr); } }
   /* ogni beneficio ha la sua tinta: schede bianche su fondo quasi bianco sparivano */
   .benefit {
     display: flex; flex-direction: column; gap: 0.6rem;
@@ -877,7 +879,7 @@
 
   .bio-grid { display: grid; gap: 1.1rem; }
   @media (min-width: 760px)  { .bio-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1040px) { .bio-grid { grid-template-columns: 1.15fr 0.9fr 1fr; } }
+  @media (min-width: 1040px) { .bio-grid { grid-template-columns: 1.1fr 1fr; } }
 
   .bio-card {
     background: var(--card); border-radius: 20px;
@@ -1284,18 +1286,17 @@
           than you think
         </h1>
         <p class="lede reveal">
-          I teach aerial disciplines — silks and hoop — plus everything that sits
-          underneath them: conditioning, mobility and floor work. Some of my students
-          have trained for ten years, others had never done a single sport in their
-          life: what changes is where we start from, not whether you can do it. You
-          don't have to be flexible or strong first. You become it along the way.
+          I teach aerial disciplines to adults and children — silks, hoop, hammock,
+          aerial fitness, circus. Among the people who train with me, some have done
+          aerial for ten years and some had never played a single sport in their life.
+          You don't have to be strong or flexible first: you become it along the way.
         </p>
         <div class="actions reveal">
           <a class="btn btn-solid" href="#contatti">Book a trial</a>
         </div>
         <p class="hero-note reveal">
           <span class="dot"></span>
-          <span>Milan, Morbegno and Lombardy · <b>first trial lesson free</b></span>
+          <span>Milan, Morbegno and all of Lombardy · <b>the first trial lesson is free</b></span>
         </p>
       </div>
 
@@ -1360,79 +1361,14 @@
     <path d="M0 58 C 220 24, 420 70, 620 46 C 820 22, 1020 66, 1200 40" stroke="#6FC6B3" opacity=".8" />
   </svg>
 
-  <section id="percorsi" class="tint-pesca">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Who it's for</p>
-        <h2 class="display">Four ways to meet me</h2>
-        <p class="lede">
-          Maybe you want to try, you're bringing your child, you're after something
-          new for your gym, or you've got an evening to fill. Wherever you're coming
-          from, it always starts by seeing it live.
-        </p>
-      </div>
-
-      <div class="paths">
-        <article class="path reveal">
-          <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-silk" /></svg></span>
-          <p class="who">Want to try</p>
-          <h3>Adult lessons</h3>
-          <p>
-            On your own or in a small group. You start from the basic climbs or the
-            hammock, and at the first lesson almost everyone gets their feet off the ground.
-          </p>
-          <a class="go" href="#discipline">See the classes</a>
-        </article>
-
-        <article class="path reveal">
-          <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-juggle" /></svg></span>
-          <p class="who">Have kids</p>
-          <h3>Circus and movement, ages 6+</h3>
-          <p>
-            Juggling, acro-sport and low aerial apparatus. They learn coordination
-            while they play, always over the mats.
-          </p>
-          <a class="go" href="#discipline">See the classes</a>
-        </article>
-
-        <article class="path reveal">
-          <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-gym" /></svg></span>
-          <p class="who">Have a space</p>
-          <h3>Classes at your gym</h3>
-          <p>
-            I bring silks, hammock and mobility where there are high ceilings and
-            empty hours to fill. The gear is mine, and I come and see the place before we sign anything.
-          </p>
-          <a class="go" href="#palestre">How it works</a>
-        </article>
-
-        <article class="path reveal">
-          <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-stage" /></svg></span>
-          <p class="who">Planning an event</p>
-          <h3>Live performance</h3>
-          <p>
-            Aerial acts for parties, openings and corporate evenings. Solo or as a
-            duo, with certified equipment and the rigging checked before anyone goes up.
-          </p>
-          <a class="go" href="#eventi">How it works</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <svg class="ribbon-break" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0 30 C 220 62, 400 10, 620 38 C 840 64, 1010 16, 1200 44" stroke="#F2C57C" />
-    <path d="M0 44 C 200 74, 420 22, 640 50 C 860 76, 1030 30, 1200 56" stroke="#EDA2B1" opacity=".75" />
-  </svg>
-
   <section id="discipline" class="tint-menta">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">Disciplines</p>
         <h2 class="display">What I teach</h2>
         <p class="lede">
-          Six classes. First the ones that hang from the apparatus, then the ones
-          on the ground. Almost all of them you can start with no experience at all.
+          Five classes, in the air and on the ground. You can start any of them
+          from scratch, with no experience behind you.
         </p>
       </div>
 
@@ -1450,11 +1386,11 @@
               <ul class="audience"><li class="ad">Adults</li><li class="ra">Teens</li></ul>
             </div>
           </header>
-          <p>You climb, you wrap, you come down keeping everything under control. It's the most complete of the six: it brings together strength, mobility and a touch of theatre.</p>
+          <p>You climb, you wrap in the silk, you come down. Every move is under your control.</p>
           <ul class="ticks compact">
-            <li>Climbs, keys, wraps and drops</li>
-            <li>A solid grip and a centre that holds</li>
-            <li>Choreography comes once the basics hold</li>
+            <li>Climbs, keys, wraps, drops</li>
+            <li>You stay a metre off the ground until the movement comes on its own</li>
+            <li>Between the third and fifth lesson the first photo-worthy figure arrives</li>
           </ul>
           <p class="meta">Beginner, intermediate and advanced levels</p>
         </article>
@@ -1466,11 +1402,11 @@
               <ul class="audience"><li class="ad">Adults</li><li class="se">Seniors</li></ul>
             </div>
           </header>
-          <p>The silk is tied into a loop and it holds your whole weight for you. You work seated or lying inside it, without having to hold on.</p>
+          <p>The same fabric, tied into a loop and hung low. You don't hold yourself up: it holds you.</p>
           <ul class="ticks compact">
-            <li>You're never hanging by your arms</li>
-            <li>Gentle toning, and the spine gets to breathe</li>
-            <li>When you feel ready, you move on to silks from here</li>
+            <li>You sit or lie inside it, without holding on</li>
+            <li>The spine lengthens instead of loading up</li>
+            <li>From here, when you feel ready, you move on to silks</li>
           </ul>
           <p class="meta">No experience needed</p>
         </article>
@@ -1482,13 +1418,13 @@
               <ul class="audience"><li class="ad">Adults</li></ul>
             </div>
           </header>
-          <p>Here the silk is a piece of equipment, not a stage. You tone up and gain mobility without having to learn a single figure.</p>
+          <p>Here you don't learn figures: it's a workout, and the silk is one of the tools.</p>
           <ul class="ticks compact">
-            <li>Bands, light weights and wall bars</li>
-            <li>Full body, or just core, arms and back</li>
-            <li>Works even if you already train in something else</li>
+            <li>Bands, light weights, wall bars and silk</li>
+            <li>Full body, or just abs, arms and back</li>
+            <li>In the air, the same exercise works harder and spares the joints</li>
           </ul>
-          <p class="meta">Men and women &middot; on the floor and in the air</p>
+          <p class="meta">Bodyweight and in the air</p>
         </article>
       </div>
 
@@ -1500,25 +1436,9 @@
       <div class="course-band reveal">
         <span class="band-label terra">On the ground</span>
         <span class="band-rule" aria-hidden="true"></span>
-        <span class="band-note">on the mat, no climbing</span>
+        <span class="band-note">conditioning and play</span>
       </div>
-      <div class="course-row">
-        <article class="disc reveal">
-          <header class="disc-head">
-            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-child" /></svg></span>
-            <div>
-              <h3>Creative movement</h3>
-              <ul class="audience"><li class="ba">Kids</li></ul>
-            </div>
-          </header>
-          <p>Low apparatus over the mats. It isn't acrobatics in miniature: it's discovering what the body can already do, through play.</p>
-          <ul class="ticks compact">
-            <li>First they learn to fall, then to climb</li>
-            <li>Coordination, balance, and knowing where they are</li>
-            <li>No competing between kids</li>
-          </ul>
-          <p class="meta">Ages 6+ &middot; groups by age</p>
-        </article>
+      <div class="course-row duo">
         <article class="disc reveal">
           <header class="disc-head">
             <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-stretch" /></svg></span>
@@ -1527,10 +1447,10 @@
               <ul class="audience"><li class="ad">Adults</li><li class="se">Seniors</li></ul>
             </div>
           </header>
-          <p>All on the floor, working on shoulders, hips and back. You lengthen by actively pushing, not by holding still in a position.</p>
+          <p>All on the ground, on shoulders, hips and back. You build the positions by pushing, not by letting go.</p>
           <ul class="ticks compact">
-            <li>You lengthen by pushing, not by holding still</li>
-            <li>If you start out stiff we go slow, and I guide you</li>
+            <li>You train to hold the positions, not just to reach them</li>
+            <li>We start from the mobility you have today, no comparisons</li>
             <li>You take the exercises home with you</li>
           </ul>
           <p class="meta">One-to-one or in pairs</p>
@@ -1543,30 +1463,16 @@
               <ul class="audience"><li class="ba">Kids</li><li class="ra">Teens</li></ul>
             </div>
           </header>
-          <p>Juggling, acro-sport and a little end-of-course show, built together and put on for the parents.</p>
+          <p>Juggling, acro-sport and low aerial apparatus. It starts with play and ends on a stage.</p>
           <ul class="ticks compact">
-            <li>Balls, hula hoops and clubs</li>
-            <li>Acro-sport, where you learn to trust your teammates</li>
-            <li>At the end everyone brings their own act</li>
+            <li>Balls, clubs, hula hoops and the first silks half a metre off the ground</li>
+            <li>First they learn to fall, then to climb, always over the mats</li>
+            <li>At the end of the year a show for the parents: no competition, everyone brings their own act</li>
           </ul>
-          <p class="meta">Ages 6+ &middot; workshops, camps and courses</p>
+          <p class="meta">Ages 6+ &middot; yearly course &middot; groups by age</p>
         </article>
       </div>
 
-      <div class="promise reveal">
-        <div class="promise-item">
-          <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-shield" /></svg></span>
-          <div><b>Certified equipment</b><span>Silks, hammock, hoop and carabiners &mdash; I bring them, all inspected</span></div>
-        </div>
-        <div class="promise-item">
-          <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-group" /></svg></span>
-          <div><b>Small, matched groups</b><span>Split by age and level, so I can keep an eye on all of you</span></div>
-        </div>
-        <div class="promise-item">
-          <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-clock" /></svg></span>
-          <div><b>It starts with a trial</b><span>A single lesson, before you pick a path</span></div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1576,8 +1482,8 @@
         <p class="eyebrow">Benefits</p>
         <h2 class="display">What actually changes</h2>
         <p class="lede">
-          I'm not promising a transformation. But these are the things I most often
-          see happen in people who train with some consistency.
+          I'm not promising a transformation. These are simply the things I most
+          often see happen in people who train consistently.
         </p>
       </div>
 
@@ -1585,7 +1491,7 @@
         <div class="benefit reveal">
           <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-spine" /></svg></span>
           <h3>A decompressed back</h3>
-          <p>Hanging, the spine lengthens instead of being squashed. It's the first thing you feel, often after a single lesson.</p>
+          <p>In suspension the spine lengthens instead of compressing. It's the first thing you feel, often after a single lesson.</p>
         </div>
         <div class="benefit reveal">
           <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-dumbbell" /></svg></span>
@@ -1595,22 +1501,12 @@
         <div class="benefit reveal">
           <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-stretch" /></svg></span>
           <h3>More mobility and flexibility</h3>
-          <p>The joints get back the range of movement they'd stopped using.</p>
+          <p>The joints get back the range of movement they'd stopped using. Shoulders and hips respond first, and you notice it in everyday movements, not just at the gym.</p>
         </div>
         <div class="benefit reveal">
           <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-posture" /></svg></span>
           <h3>Better posture</h3>
-          <p>Staying up in the air takes the deep muscles &mdash; the same ones that keep you upright at a desk.</p>
-        </div>
-        <div class="benefit reveal">
-          <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-balance" /></svg></span>
-          <h3>Coordination and balance</h3>
-          <p>The body learns where it is, even upside down.</p>
-        </div>
-        <div class="benefit reveal">
-          <span class="chip" aria-hidden="true"><svg class="ico"><use href="#ico-relax" /></svg></span>
-          <h3>Less muscle tension</h3>
-          <p>Neck, shoulders and lower back loosen up. They're the three places the day ends up.</p>
+          <p>Staying up in the air takes the deep muscles: the same ones that keep you aligned at a desk, and that usually no one trains.</p>
         </div>
       </div>
     </div>
@@ -1623,9 +1519,7 @@
         <h2 class="display">Annalisa Bignami</h2>
         <p class="lede">
           I started out as an aerial silks performer: festivals, events and a long
-          tour around Italy. From the stage I moved into teaching, and that's where
-          I realised it was the work I truly wanted. What keeps me here is the moment
-          I see a figure finally come together for someone.
+          tour around Italy. From the stage I moved into teaching.
         </p>
       </div>
 
@@ -1636,8 +1530,8 @@
 
       <div class="figures reveal">
         <div class="fig"><b data-to="5" data-suffix="+">5+</b><span>years on stage and teaching</span></div>
-        <div class="fig"><b data-to="2">2</b><span>aerial disciplines: silks and hoop</span></div>
-        <div class="fig"><b data-to="5" data-suffix="&nbsp;levels">5&nbsp;levels</b><span>from the first climb to advanced figures</span></div>
+        <div class="fig"><b data-to="65" data-suffix="+">65+</b><span>people I've taught so far</span></div>
+        <div class="fig"><b data-to="5">5</b><span>active classes, in the air and on the ground</span></div>
       </div>
 
       <div class="bio-grid">
@@ -1651,13 +1545,7 @@
           </div>
           <div class="cred">
             <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-diploma" /></svg></span>
-            <b>Aerial Acrobatics, Level I</b>
-            <span class="year">2023</span>
-            <span class="issuer">AIDA &mdash; Italian Academy of Aerial Dance</span>
-          </div>
-          <div class="cred">
-            <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-silk" /></svg></span>
-            <b>Aerial Acrobatics, Level II</b>
+            <b>Aerial Acrobatics, Levels I &amp; II</b>
             <span class="year">2023</span>
             <span class="issuer">AIDA &mdash; Italian Academy of Aerial Dance</span>
           </div>
@@ -1670,17 +1558,6 @@
         </div>
 
         <div class="bio-card reveal">
-          <p class="side-title">Who I work with</p>
-          <ul class="ticks compact">
-            <li>Adults who've never done anything aerial</li>
-            <li>Children and teens from age 6</li>
-            <li>Seniors who want to get moving again</li>
-            <li>Former gymnasts and dancers starting over</li>
-            <li>Anyone preparing for a showcase or a competition</li>
-          </ul>
-        </div>
-
-        <div class="bio-card reveal">
           <p class="side-title">Where to find me</p>
           <div class="place-row">
             <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-gym" /></svg></span>
@@ -1688,17 +1565,16 @@
           </div>
           <div class="place-row">
             <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-pin" /></svg></span>
-            <div><b>Morbegno</b><span>Classes starting up: no one teaches aerial in the valley</span></div>
+            <div><b>Morbegno</b><span>Classes starting up: no one teaches aerial in Valtellina yet</span></div>
           </div>
           <!-- era di nuovo il mappamondo, gia' usato qui sopra per le lingue:
                due voci diverse con la stessa icona si leggono come la stessa cosa -->
           <div class="place-row">
             <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-stage" /></svg></span>
-            <div><b>Out of area</b><span>Happy to travel for classes and events across Lombardy</span></div>
+            <div><b>Rest of Lombardy</b><span>Happy to travel for classes, workshops and events</span></div>
           </div>
           <p class="side-note">
-            I also teach in <b>English and Spanish</b> &mdash; handy if you've just
-            moved here and want a class without the language barrier.
+            I also teach in <b>English and Spanish</b>.
           </p>
         </div>
       </div>
@@ -1716,42 +1592,34 @@
         <details class="qa">
           <summary>I'm not flexible at all. Can I still try?</summary>
           <p>
-            Yes — and you're in good company: it's the most common case I get.
-            Flexibility comes later, you don't need it first; the early figures ask
+            Yes — and you're in good company: it's the most common starting point I
+            come across. Flexibility comes later, not first: the early figures ask
             for more hold than reach. People who start out stiff usually notice the
             first changes within a month.
           </p>
         </details>
         <details class="qa">
-          <summary>I'm scared of heights.</summary>
+          <summary>I'm scared of heights: can I still do it?</summary>
           <p>
             For quite a few lessons you stay a metre off the ground, and you only go
             higher once the movement comes without thinking. Fear of heights is
-            almost always fear of not being in control, and once the body knows what
-            to do it fades on its own.
+            almost always fear of not being in control: once the body knows what
+            to do, it fades on its own.
           </p>
         </details>
         <details class="qa">
-          <summary>What age do you need to be? Is there a limit?</summary>
+          <summary>What age can you start at? Is there an upper limit?</summary>
           <p>
-            From age 6 for the kids' courses, and for adults there's no ceiling: I
-            have students who started after fifty. Age doesn't decide whether you
-            can do it, it decides how fast we go.
+            From age 6 for the Circus lab; for adults there's no ceiling, and some
+            have started after fifty. Age doesn't decide whether you can do it: it
+            only decides how fast we go.
           </p>
         </details>
         <details class="qa">
-          <summary>How long before I can do something that looks good?</summary>
+          <summary>How long before I can do a real figure?</summary>
           <p>
             A photo-worthy figure usually shows up between the third and fifth
-            lesson. Silks pay off early, and that's why people who start tend to stay.
-          </p>
-        </details>
-        <details class="qa">
-          <summary>What should I bring?</summary>
-          <p>
-            Long leggings and a top that covers your armpits, because on bare skin
-            the fabric slides and burns. No shoes, no jewellery, short nails. The
-            rest I provide.
+            lesson. Silks pay off early: that's why people who start tend to stay.
           </p>
         </details>
         <details class="qa">
@@ -1759,15 +1627,24 @@
           <p>
             In Milan, where I've taught for years, and in Morbegno, where I'm
             getting classes off the ground. For the rest of Lombardy we talk it
-            through case by case, looking at distance and the space available. For
+            through case by case, weighing up distance and the space available. For
             shows and intensive workshops I'm glad to travel.
+          </p>
+        </details>
+        <details class="qa">
+          <summary>How much does it cost?</summary>
+          <p>
+            It depends on how you train: one-to-one, in pairs or in a small group,
+            single lessons or a package. The trial is free and commits you to
+            nothing — tell me which days work for you and I'll send you the prices
+            that fit.
           </p>
         </details>
       </div>
 
       <p class="faq-out reveal">
         Didn't find your question?
-        <a href="mailto:annalisabignami439@gmail.com">Write to me, I'll answer myself.</a>
+        <a href="mailto:annalisabignami439@gmail.com">Write to me: there's no front desk, you get me.</a>
       </p>
     </div>
   </section>
@@ -1778,43 +1655,41 @@
         <p class="eyebrow">For gyms</p>
         <h2 class="display">There's unused space above your members' heads</h2>
         <p class="lede">
-          Aerial classes bring in people who'd never have walked into a gym: adults
-          bored on the weights floor, former gymnasts, families. And they fill the
-          empty afternoons, not the hours you're already full.
+          Aerial classes bring into the gym people who'd never have set foot in one:
+          adults and teens bored on the weights floor, families and children.
         </p>
       </div>
 
       <div class="panel reveal">
         <h3>Why it pays off</h3>
         <ul class="ticks">
-          <li><b>It brings in new people.</b> Almost no one nearby offers it, and you get sign-ups from people who weren't even looking for a gym.</li>
-          <li><b>Members stay longer.</b> With levels there's always a next step: you think in months, not weeks.</li>
-          <li><b>It makes use of space you already pay for.</b> The height above their heads and the empty hours turn into revenue.</li>
-          <li><b>It doesn't tie you to anything.</b> We start with a trial day and a pilot course; you only build it out if the numbers add up.</li>
+          <li><b>It brings in new members.</b> Almost no one nearby offers it: you get sign-ups from people who weren't even looking for a gym.</li>
+          <li><b>It makes use of space you already pay for.</b> The height above your members' heads is paid for but unused: an aerial class turns it into revenue.</li>
+          <li><b>It doesn't tie you to anything.</b> We start with a trial day and a pilot course, and you only build it out if the numbers add up.</li>
         </ul>
-        <p class="panel-note">You need a high ceiling and a point to anchor to — but whether it's doable, I'll tell you in person. Silks, hoop and carabiners I bring and inspect myself.</p>
+        <p class="panel-note">Mostly you need a high ceiling: if there's no point to anchor to, I bring the rig myself.</p>
       </div>
 
       <div class="steps reveal">
         <div class="stepcard">
           <span class="num">01</span>
           <h3>Site visit</h3>
-          <p>I come and measure heights and anchor points. It costs nothing, and if the space won't work I tell you right there.</p>
+          <p>I come and measure heights and anchor points. It costs nothing. And if the space won't work, I tell you straight away.</p>
         </div>
         <div class="stepcard">
           <span class="num">02</span>
           <h3>Trial day</h3>
-          <p>A lesson open to your members. It shows them what it is, and tells you how many are genuinely interested.</p>
+          <p>A lesson open to your members. It shows them what it is and, above all, tells you how many are genuinely interested.</p>
         </div>
         <div class="stepcard">
           <span class="num">03</span>
           <h3>Pilot course</h3>
-          <p>A short run with limited places, in the slot we agree on. This is where you see if the course holds up.</p>
+          <p>A short run with limited places, in the time slot we decide together. This is where you see if the course holds up.</p>
         </div>
         <div class="stepcard">
           <span class="num">04</span>
           <h3>Up and running</h3>
-          <p>Parallel levels, an end-of-year showcase and, if it makes sense, a second discipline.</p>
+          <p>Parallel levels, an end-of-year showcase and, if the numbers justify it, a second discipline.</p>
         </div>
       </div>
     </div>
@@ -1833,9 +1708,8 @@
         <p class="eyebrow">Events &amp; shows</p>
         <h2 class="display">Five minutes <span class="mark">everyone talks about</span></h2>
         <p class="lede">
-          When the lights drop and someone climbs a silk five metres off the ground,
-          the room goes quiet. That's what I bring to parties, openings, corporate
-          evenings and village fairs.
+          The lights drop, I climb a silk five metres off the ground, and the room
+          goes quiet. It happens every time.
         </p>
       </div>
 
@@ -1861,6 +1735,10 @@
             <p>Street parties, festivals, fairs</p>
           </article>
       </div>
+
+      <p class="reveal" style="text-align:center; max-width:56ch; margin:clamp(1.3rem,3vw,1.9rem) auto 0; color:var(--fg-mid); font-size:0.95rem;">
+        You need height and an anchor point; where there isn't one, I bring my own rig.
+      </p>
     </div>
 
     <div class="marquee" aria-label="Where I've already performed">
@@ -1892,8 +1770,8 @@
       <p class="eyebrow reveal">Let's talk</p>
       <h2 class="display reveal">The first step is <span class="mark">a trial</span></h2>
       <p class="lede reveal">
-        Tell me what you need: a lesson, a course to get going, an evening to fill.
-        I'll reply myself, with a proposal built around your case.
+        Tell me what you need: a lesson, a course to get going, an evening to round
+        off in style. I'll reply myself, with a proposal built around your case.
       </p>
       <div class="lines reveal">
         <a href="https://wa.me/393518007626?text=Hi%20Annalisa!%20I%20saw%20your%20website%20and%20would%20like%20to%20book%20a%20trial%20lesson."
@@ -1925,7 +1803,7 @@
         <li>
           <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-silk" /></svg></span>
           <b>You try</b>
-          <span>One lesson, then it's your call</span>
+          <span>One free lesson, then it's your call</span>
         </li>
       </ol>
     </div>
