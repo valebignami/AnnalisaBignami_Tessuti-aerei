@@ -1058,7 +1058,62 @@
   .medallion .hero-photo { position:absolute; inset:0; z-index:1; width:100%; height:100%; object-fit:cover; object-position:50% 42%; filter:saturate(.72) contrast(1.02) brightness(1.03) sepia(.12); }
   .medallion .photo-tint { position:absolute; inset:0; z-index:2; pointer-events:none; background:linear-gradient(155deg, rgba(238,135,99,.22), rgba(255,242,211,.04) 50%, rgba(111,198,179,.18)); mix-blend-mode:multiply; }
   .photo-band { position:relative; width:100%; overflow:hidden; height:clamp(230px,34vw,440px); }
-  .photo-band.short { height:clamp(150px,18vw,250px); }
+  .photo-band.short { height:clamp(160px,22vw,300px); }
+  .gallery { padding-block:clamp(2.6rem,6vw,4.8rem); overflow:hidden; }
+  /* ---- collage pazzerello ---- */
+  .collage { position:relative; max-width:1020px; margin:1.8rem auto 0; display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:clamp(.7rem,1.9vw,1.5rem); }
+  .collage figure { --frame:var(--mandarino); margin:0; position:relative; overflow:hidden; background:#fff; border:5px solid #fff; box-shadow:0 0 0 4px var(--frame), 0 20px 38px -22px rgba(51,33,28,.55); transition:transform .35s cubic-bezier(.2,.8,.3,1), box-shadow .35s ease; }
+  .collage figure img { display:block; width:100%; height:100%; object-fit:cover; }
+  /* forme */
+  .collage .sh-round   { border-radius:20px; }
+  .collage .sh-circle  { border-radius:50%; aspect-ratio:1/1; }
+  .collage .sh-pill    { border-radius:999px; }
+  .collage .sh-squircle{ border-radius:42% 42% 42% 42% / 40% 40% 40% 40%; }
+  .collage .sh-blob    { border-radius:58% 42% 46% 54% / 45% 55% 45% 55%; }
+  .collage .sh-blob2   { border-radius:44% 56% 63% 37% / 55% 42% 58% 45%; }
+  /* dimensioni (larghezza; l'aspect-ratio guida l'altezza) */
+  .collage .sz-s { width:clamp(118px,20vw,168px); }
+  .collage .sz-m { width:clamp(150px,25vw,208px); }
+  .collage .sz-l { width:clamp(178px,31vw,250px); }
+  .collage .ar-t { aspect-ratio:3/4; }
+  .collage .ar-w { aspect-ratio:4/3; }
+  /* colori cornice */
+  .collage .fr-mandarino { --frame:var(--mandarino); }
+  .collage .fr-albicocca { --frame:var(--albicocca); }
+  .collage .fr-lampone   { --frame:var(--lampone); }
+  .collage .fr-acqua     { --frame:var(--acqua); }
+  /* inclinazioni allegre */
+  .collage figure:nth-child(1){ transform:rotate(-3deg); }
+  .collage figure:nth-child(2){ transform:rotate(2.5deg); }
+  .collage figure:nth-child(3){ transform:rotate(4deg); }
+  .collage figure:nth-child(4){ transform:rotate(-4.5deg); }
+  .collage figure:nth-child(5){ transform:rotate(3deg); }
+  .collage figure:nth-child(6){ transform:rotate(-2deg); }
+  .collage figure:nth-child(7){ transform:rotate(5deg); }
+  .collage figure:nth-child(8){ transform:rotate(-3.5deg); }
+  .collage figure:nth-child(9){ transform:rotate(3.5deg); }
+  .collage figure:nth-child(10){ transform:rotate(-2.5deg); }
+  .collage figure:nth-child(11){ transform:rotate(4.5deg); }
+  .collage figure:nth-child(12){ transform:rotate(-4deg); }
+  .collage figure:nth-child(13){ transform:rotate(2deg); }
+  .collage figure:nth-child(14){ transform:rotate(-3deg); }
+  .collage figure:hover, .collage figure:focus-within { transform:rotate(0) scale(1.05); box-shadow:0 0 0 4px var(--frame), 0 26px 46px -20px rgba(51,33,28,.6); z-index:3; }
+  /* coriandoli decorativi */
+  .collage .confetti { position:absolute; border-radius:50%; opacity:.85; pointer-events:none; }
+  .collage .confetti.c1 { width:14px; height:14px; background:var(--albicocca); top:-6px; left:8%; }
+  .collage .confetti.c2 { width:10px; height:10px; background:var(--acqua); top:22%; right:2%; }
+  .collage .confetti.c3 { width:16px; height:16px; background:var(--lampone); bottom:6%; left:3%; border-radius:44% 56% 60% 40%; }
+  .collage .confetti.c4 { width:9px; height:9px; background:var(--mandarino); bottom:-4px; right:14%; }
+  @media(max-width:640px){
+    .collage { gap:.55rem; }
+    .collage .sz-s { width:clamp(104px,30vw,126px); }
+    .collage .sz-m { width:clamp(118px,36vw,140px); }
+    .collage .sz-l { width:clamp(124px,38vw,148px); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .collage figure { transition:none; }
+    .collage figure:hover, .collage figure:focus-within { transform:none; }
+  }
   .photo-band img { width:100%; height:100%; object-fit:cover; display:block; filter:saturate(.8) contrast(1.03) brightness(1.02); }
   .photo-band .pb-duo { display:flex; height:100%; }
   .photo-band .pb-duo img { width:50%; }
@@ -1803,10 +1858,59 @@
     </div>
   </section>
 
-  <div class="photo-band short">
-    <img src="foto-aerea-donna.jpg" alt="Woman on aerial silks in a bright studio" style="object-position:center 45%">
-    <span class="pb-tint" aria-hidden="true"></span>
-  </div>
+  <section class="gallery tint-sole">
+    <div class="wrap">
+      <p class="eyebrow reveal">In the air, at every age</p>
+      <div class="collage reveal">
+        <span class="confetti c1" aria-hidden="true"></span>
+        <span class="confetti c2" aria-hidden="true"></span>
+        <span class="confetti c3" aria-hidden="true"></span>
+        <span class="confetti c4" aria-hidden="true"></span>
+        <figure class="sh-round sz-l ar-t fr-acqua">
+          <img src="foto-aerea-donna.jpg" alt="Woman suspended on aerial silks in a bright studio" loading="lazy">
+        </figure>
+        <figure class="sh-blob sz-m ar-w fr-albicocca">
+          <img src="foto-giocoleria-mamma.jpg" alt="A mother and two girls juggling with orange balls" loading="lazy">
+        </figure>
+        <figure class="sh-pill sz-m ar-t fr-mandarino">
+          <img src="foto-aerea-bimba.jpg" alt="Girl playing with a hula hoop in the gym" loading="lazy">
+        </figure>
+        <figure class="sh-round sz-l ar-t fr-lampone">
+          <img src="foto-donna-tessuti-b.jpg" alt="Woman on aerial silks by a bright window" loading="lazy">
+        </figure>
+        <figure class="sh-round sz-m ar-w fr-acqua">
+          <img src="foto-lezione-spaccata.jpg" alt="Girl doing the splits in class, on colourful mats" loading="lazy">
+        </figure>
+        <figure class="sh-squircle sz-m ar-t fr-albicocca">
+          <img src="foto-cerchio-b.jpg" alt="Woman on an aerial hoop outdoors, blue sky" loading="lazy">
+        </figure>
+        <figure class="sh-circle sz-s fr-lampone">
+          <img src="foto-aerea-bimbo.jpg" alt="Child hanging upside down on wall bars in the gym" loading="lazy">
+        </figure>
+        <figure class="sh-blob2 sz-m ar-w fr-acqua">
+          <img src="foto-amaca.jpg" alt="Woman on an aerial hammock in a bright studio" loading="lazy">
+        </figure>
+        <figure class="sh-round sz-m ar-t fr-mandarino">
+          <img src="foto-uomo-allungamento.jpg" alt="Man stretching in the sun on a wooden deck" loading="lazy">
+        </figure>
+        <figure class="sh-circle sz-s fr-albicocca">
+          <img src="foto-giocoleria-circo.jpg" alt="Performer in a circus costume juggling" loading="lazy">
+        </figure>
+        <figure class="sh-blob sz-l ar-w fr-lampone">
+          <img src="foto-donna-tessuti-a.jpg" alt="Aerialist on red aerial silks" loading="lazy">
+        </figure>
+        <figure class="sh-pill sz-m ar-t fr-acqua">
+          <img src="foto-lezione-nastri.jpg" alt="Coach and children with colourful ribbons in the gym" loading="lazy">
+        </figure>
+        <figure class="sh-round sz-m ar-w fr-mandarino">
+          <img src="foto-cerchio-a.jpg" alt="Aerialist on an aerial hoop by the river" loading="lazy">
+        </figure>
+        <figure class="sh-squircle sz-m ar-w fr-albicocca">
+          <img src="foto-uomo-elastico.jpg" alt="Man stretching with a resistance band on a mat" loading="lazy">
+        </figure>
+      </div>
+    </div>
+  </section>
 
   <section id="contatti" class="contact">
     <div class="wrap">
