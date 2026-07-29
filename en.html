@@ -1058,6 +1058,7 @@
   .medallion .hero-photo { position:absolute; inset:0; z-index:1; width:100%; height:100%; object-fit:cover; object-position:50% 42%; filter:saturate(.72) contrast(1.02) brightness(1.03) sepia(.12); }
   .medallion .photo-tint { position:absolute; inset:0; z-index:2; pointer-events:none; background:linear-gradient(155deg, rgba(238,135,99,.22), rgba(255,242,211,.04) 50%, rgba(111,198,179,.18)); mix-blend-mode:multiply; }
   .photo-band { position:relative; width:100%; overflow:hidden; height:clamp(230px,34vw,440px); }
+  .photo-band.short { height:clamp(150px,18vw,250px); }
   .photo-band img { width:100%; height:100%; object-fit:cover; display:block; filter:saturate(.8) contrast(1.03) brightness(1.02); }
   .photo-band .pb-duo { display:flex; height:100%; }
   .photo-band .pb-duo img { width:50%; }
@@ -1801,6 +1802,11 @@
       </div>
     </div>
   </section>
+
+  <div class="photo-band short">
+    <img src="foto-aerea-donna.jpg" alt="Woman on aerial silks in a bright studio" style="object-position:center 45%">
+    <span class="pb-tint" aria-hidden="true"></span>
+  </div>
 
   <section id="contatti" class="contact">
     <div class="wrap">
