@@ -679,16 +679,31 @@
   }
   .disc-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  /* opening of the section: what the discipline is | who it is for */
+  /* apertura della sezione: cos'e' la disciplina | a chi si rivolge.
+     Erano due blocchi di testo appoggiati sul fondo colorato, senza niente
+     intorno: due muri grigi. Ora sono schede come tutte le altre, e il
+     secondo e' un elenco invece di un periodo unico, cosi' si legge a colpo
+     d'occhio chi sono le persone che arrivano. */
+  /* le due schede si pareggiano in altezza: una piu' corta dell'altra lasciava
+     uno scalino in mezzo alla riga */
   .intro-due {
-    display: grid; gap: 1.1rem 2.4rem; margin-bottom: clamp(1.6rem, 3.4vw, 2.4rem);
+    display: grid; gap: 1.1rem; margin-bottom: clamp(1.6rem, 3.4vw, 2.4rem);
+    align-items: stretch;
   }
-  @media (min-width: 860px) { .intro-due { grid-template-columns: 1.25fr 1fr; } }
+  @media (min-width: 860px) { .intro-due { grid-template-columns: 1.15fr 1fr; gap: 1.4rem; } }
+  .intro-due > div {
+    background: var(--card); border-radius: 20px;
+    padding: clamp(1.35rem, 2.8vw, 1.75rem);
+    display: flex; flex-direction: column; gap: 0.7rem;
+  }
   .intro-due p { color: var(--fg-mid); font-size: 0.97rem; line-height: 1.62; }
-  .intro-due .side-title { margin-bottom: 0.45rem; color: var(--fg-soft); }
-  .intro-due .side-title + p { margin-top: 0; }
+  .intro-due .side-title { margin-bottom: 0.15rem; }
+  /* la frase che toglie l'alibi vale piu' delle altre: qui non si perde */
+  .intro-due .rassicura { color: var(--fg); font-weight: 700; }
+  .intro-due .ticks { margin-top: 0.1rem; }
 
-  .pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.9rem; }
+  /* le tre parole del volantino: stesse pastiglie di .audience, un filo piu' grandi */
+  .pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; padding-top: 0.4rem; }
   .pill {
     font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
     text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 999px;
@@ -1586,8 +1601,9 @@
           <p>Aerial acrobatics is a discipline that comes from the circus arts and can be
             performed on several apparatus: silks, hoop, rope and hammock. Defying gravity,
             the acrobat performs suspended movements that combine strength, mobility and
-            adrenaline. It is accessible and safe: you start from simple elements and
-            progress step by step.</p>
+            adrenaline.</p>
+          <p class="rassicura">It is accessible and safe: you start from simple elements and progress
+            step by step.</p>
           <div class="pills">
             <span class="pill c">Spectacular</span>
             <span class="pill a">Accessible</span>
@@ -1596,16 +1612,20 @@
         </div>
         <div>
           <p class="side-title">Who it is for</p>
-          <p>A very wide range of people, children and adults, looking for an alternative,
-            complete sport: those who get bored at the gym, former gymnasts and dancers,
-            the circus-curious. And people who have never done any sport at all.</p>
+          <p>A very wide range of people, children and adults, looking for an
+            alternative, complete sport.</p>
+          <ul class="ticks compact">
+            <li>People who get bored at the gym</li>
+            <li>Former gymnasts and dancers</li>
+            <li>The circus-curious</li>
+            <li>People who have never done any sport at all</li>
+          </ul>
         </div>
       </div>
 
       <div class="course-band reveal">
         <span class="band-label aria">In the air</span>
         <span class="band-rule" aria-hidden="true"></span>
-        <span class="band-note">suspended from the apparatus</span>
       </div>
       <div class="course-row">
         <article class="disc reveal">

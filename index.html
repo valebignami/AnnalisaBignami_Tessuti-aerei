@@ -680,17 +680,31 @@
   }
   .disc-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  /* apertura della sezione: cos'e' la disciplina | a chi si rivolge */
+  /* apertura della sezione: cos'e' la disciplina | a chi si rivolge.
+     Erano due blocchi di testo appoggiati sul fondo colorato, senza niente
+     intorno: due muri grigi. Ora sono schede come tutte le altre, e il
+     secondo e' un elenco invece di un periodo unico, cosi' si legge a colpo
+     d'occhio chi sono le persone che arrivano. */
+  /* le due schede si pareggiano in altezza: una piu' corta dell'altra lasciava
+     uno scalino in mezzo alla riga */
   .intro-due {
-    display: grid; gap: 1.1rem 2.4rem; margin-bottom: clamp(1.6rem, 3.4vw, 2.4rem);
+    display: grid; gap: 1.1rem; margin-bottom: clamp(1.6rem, 3.4vw, 2.4rem);
+    align-items: stretch;
   }
-  @media (min-width: 860px) { .intro-due { grid-template-columns: 1.25fr 1fr; } }
+  @media (min-width: 860px) { .intro-due { grid-template-columns: 1.15fr 1fr; gap: 1.4rem; } }
+  .intro-due > div {
+    background: var(--card); border-radius: 20px;
+    padding: clamp(1.35rem, 2.8vw, 1.75rem);
+    display: flex; flex-direction: column; gap: 0.7rem;
+  }
   .intro-due p { color: var(--fg-mid); font-size: 0.97rem; line-height: 1.62; }
-  .intro-due .side-title { margin-bottom: 0.45rem; color: var(--fg-soft); }
-  .intro-due .side-title + p { margin-top: 0; }
+  .intro-due .side-title { margin-bottom: 0.15rem; }
+  /* la frase che toglie l'alibi vale piu' delle altre: qui non si perde */
+  .intro-due .rassicura { color: var(--fg); font-weight: 700; }
+  .intro-due .ticks { margin-top: 0.1rem; }
 
   /* le tre parole del volantino: stesse pastiglie di .audience, un filo piu' grandi */
-  .pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.9rem; }
+  .pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; padding-top: 0.4rem; }
   .pill {
     font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
     text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 999px;
@@ -1542,8 +1556,9 @@
           <p>L'acrobatica aerea &egrave; una disciplina tipica delle arti circensi e pu&ograve; essere
             eseguita su diversi attrezzi come i tessuti, il cerchio, la corda e l'amaca.
             Sfidando la forza di gravit&agrave;, l'acrobata esegue evoluzioni sospese in aria
-            combinando forza, mobilit&agrave; ed adrenalina in ogni movimento. &Egrave; una disciplina
-            accessibile e sicura: si inizia da elementi semplici e si progredisce per gradi.</p>
+            combinando forza, mobilit&agrave; ed adrenalina in ogni movimento.</p>
+          <p class="rassicura">&Egrave; una disciplina accessibile e sicura: si inizia da elementi semplici e si
+            progredisce per gradi.</p>
           <div class="pills">
             <span class="pill c">Spettacolare</span>
             <span class="pill a">Accessibile</span>
@@ -1552,16 +1567,20 @@
         </div>
         <div>
           <p class="side-title">A chi si rivolge</p>
-          <p>Un pubblico molto ampio, bambini e adulti, che cerca uno sport alternativo e
-            completo: chi in palestra si annoia, ex ginnaste e danzatrici, curiosi del circo.
-            E chi non aveva mai fatto sport in vita sua.</p>
+          <p>Un pubblico molto ampio, bambini e adulti, che cerca uno sport
+            alternativo e completo.</p>
+          <ul class="ticks compact">
+            <li>Chi in palestra si annoia</li>
+            <li>Ex ginnaste e danzatrici</li>
+            <li>Curiosi del circo</li>
+            <li>Chi non aveva mai fatto sport in vita sua</li>
+          </ul>
         </div>
       </div>
 
       <div class="course-band reveal">
         <span class="band-label aria">In aria</span>
         <span class="band-rule" aria-hidden="true"></span>
-        <span class="band-note">sospesi all'attrezzo</span>
       </div>
       <div class="course-row">
         <article class="disc reveal">
