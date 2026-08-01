@@ -1171,45 +1171,103 @@
 
   /* ---- reviews ---- */
 
-  /* The number of cards changes over time: three today, two or four tomorrow.
-     auto-fit spreads whatever is there without touching the stylesheet again. */
+  /* Il titolo lasciava mezza riga vuota a destra: li' ci sta il riepilogo del
+     voto, che e' anche la prima cosa che si guarda in una pagina di recensioni. */
+  /* .section-head e' largo al massimo 40rem: al riquadro del voto serve tutta
+     la riga, altrimenti finisce appiccicato in mezzo al titolo */
+  .say-head { display: grid; gap: 1.2rem 2.4rem; align-items: end; max-width: none; }
+  /* dentro il grid il gap di .section-head non lavora piu' fra occhiello,
+     titolo e sommario: li rimetto in colonna con lo stesso respiro */
+  .say-head > div:first-child {
+    max-width: 40rem; display: flex; flex-direction: column;
+    align-items: start; gap: 1rem;
+  }
+  @media (min-width: 900px) { .say-head { grid-template-columns: 1fr auto; } }
+  .voto {
+    background: var(--card); border-radius: 20px; padding: 1.1rem 1.5rem;
+    display: grid; justify-items: center; gap: 0.3rem; min-width: 13rem;
+  }
+  .voto b {
+    font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+    font-size: 2.6rem; line-height: 1; color: var(--fg);
+  }
+  .voto .stars .ico { width: 20px; height: 20px; }
+  .voto-note { font-size: 0.8rem; color: var(--fg-soft); text-align: center; line-height: 1.45; }
+  .voto-note b { font-family: inherit; font-size: inherit; color: var(--fg-mid); }
+
+  /* Il numero di schede cambia nel tempo: oggi tre, domani due o quattro.
+     auto-fit distribuisce quello che c'e' senza tornare a toccare il foglio. */
   .says {
     display: grid; gap: 1.1rem;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
   }
+
   .say {
+    position: relative; overflow: hidden;
     display: flex; flex-direction: column; gap: 0.75rem;
-    padding: clamp(1.25rem, 2.6vw, 1.55rem);
+    padding: clamp(1.35rem, 2.6vw, 1.7rem);
     background: var(--card); border-radius: 20px;
     transition: transform .26s cubic-bezier(.3,1.2,.6,1), box-shadow .26s ease;
   }
   .say:hover { transform: translateY(-5px); box-shadow: 0 18px 30px -24px rgba(120,70,40,.7); }
-  .say-text { color: var(--fg-mid); font-size: 0.96rem; }
-  /* aligned to the top, not centred: when the context line wraps, centring
-     dropped the name and the cards no longer lined up */
+  /* filetto in cima, dello stesso colore dell'avatar: da' un capo alla scheda */
+  .say::before {
+    content: ""; position: absolute; inset: 0 0 auto; height: 4px;
+    background: var(--chip-fg, #C05B33);
+  }
+  /* la virgoletta e' decorazione, non testo: sta dietro e non si legge.
+     Tinta del filetto molto diluita: il fondo chiaro della chip, su scheda
+     bianca, non si vedeva proprio. */
+  .say::after {
+    content: "\201D"; position: absolute; top: 0.4rem; right: 0.9rem;
+    font-family: Georgia, "Times New Roman", serif; font-size: 5.5rem; line-height: 0.8;
+    color: color-mix(in srgb, var(--chip-fg, #C05B33) 16%, transparent); z-index: 0; pointer-events: none;
+  }
+  .say > * { position: relative; z-index: 1; }
+  .say-text { color: var(--fg-mid); font-size: 0.97rem; line-height: 1.62; }
+
+  /* allineato in alto e non al centro: quando la riga di contesto va a capo,
+     con il centraggio il nome scendeva e le schede non erano piu' in pari */
   .say-who {
     display: grid; grid-template-columns: auto 1fr; gap: 0.1rem 0.8rem;
     align-items: start;
   }
-  .say-who b { font-size: 0.95rem; font-weight: 700; }
-  .say-ctx { font-size: 0.82rem; color: var(--fg-soft); }
+  .say-who b { font-size: 1rem; font-weight: 700; }
+  .say-ctx { font-size: 0.84rem; color: var(--fg-soft); }
+
   .say-avatar {
     grid-row: span 2;
-    width: 46px; height: 46px; border-radius: 50%; overflow: hidden;
+    width: 48px; height: 48px; border-radius: 50%; overflow: hidden;
     display: grid; place-items: center; flex: none;
     font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
-    font-weight: 700; font-size: 0.95rem; letter-spacing: 0.02em;
+    font-weight: 700; font-size: 1rem; letter-spacing: 0.02em;
     background: var(--chip-bg, var(--pesca-lo));
     color: var(--chip-fg, #C05B33);
   }
   .say-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .say:nth-child(1) .say-avatar { --chip-bg: var(--pesca-lo); --chip-fg: #C05B33; }
-  .say:nth-child(2) .say-avatar { --chip-bg: var(--menta-lo); --chip-fg: #2C8C77; }
-  .say:nth-child(3) .say-avatar { --chip-bg: var(--sole-lo);  --chip-fg: #A2701A; }
-  .say:nth-child(4) .say-avatar { --chip-bg: var(--rosa-lo);  --chip-fg: #BE5871; }
-  /* Stars are drawn, not characters: that way they follow the other icons. */
+  .say:nth-child(1) { --chip-bg: var(--pesca-lo); --chip-fg: #C05B33; }
+  .say:nth-child(2) { --chip-bg: var(--menta-lo); --chip-fg: #2C8C77; }
+  .say:nth-child(3) { --chip-bg: var(--sole-lo);  --chip-fg: #A2701A; }
+  .say:nth-child(4) { --chip-bg: var(--rosa-lo);  --chip-fg: #BE5871; }
+
+  /* piede della scheda: il corso e da quanto tempo si allena, staccati dal
+     testo della recensione perche' sono dati miei, non parole sue */
+  .say-foot {
+    margin-top: auto; padding-top: 0.85rem; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;
+    font-size: 0.8rem; color: var(--fg-soft);
+  }
+  .say-foot .tag {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 0.26rem 0.62rem; border-radius: 999px;
+    background: var(--chip-bg, var(--pesca-lo)); color: var(--chip-fg, #C05B33);
+  }
+
+  /* Le stelle sono disegnate, non caratteri: cosi' seguono le altre icone del
+     sito e prendono il colore da qui. */
   .stars { display: inline-flex; gap: 3px; color: #A2701A; --star-fill: var(--albicocca); }
   .stars .ico { width: 18px; height: 18px; }
+  /* La stella non assegnata: stessa forma, solo contorno. */
   .stars .off {
     color: color-mix(in srgb, #A2701A 34%, transparent);
     --star-fill: transparent;
@@ -1837,26 +1895,40 @@
 
   <section id="dicono" class="tint-menta">
     <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Reviews</p>
-        <h2 class="display">In the words of the people who train with me</h2>
-        <p class="lede">
-          The reviews are printed as they were written, untouched: name, discipline
-          and how long they have been training.
-        </p>
+      <div class="section-head say-head reveal">
+        <div>
+          <p class="eyebrow">Reviews</p>
+          <h2 class="display">In the words of the people who train with me</h2>
+          <p class="lede">
+            The reviews are printed as they were written, untouched.
+            The people who train with me come from Milan, its outskirts and Brianza.
+          </p>
+        </div>
+        <div class="voto">
+          <b>5.0</b>
+          <span class="stars" role="img" aria-label="average 5 stars out of 5">
+            <svg class="ico"><use href="#ico-star" /></svg>
+            <svg class="ico"><use href="#ico-star" /></svg>
+            <svg class="ico"><use href="#ico-star" /></svg>
+            <svg class="ico"><use href="#ico-star" /></svg>
+            <svg class="ico"><use href="#ico-star" /></svg>
+          </span>
+          <span class="voto-note">from <b data-n>3</b> reviews</span>
+        </div>
       </div>
 
       <!-- Real reviews, pasted as they arrived. To add one, duplicate an
-           <article class="say"> and change initial, name, context line, stars
-           and text; if the stars are not five, aria-label must be fixed too,
-           because that is what screen reader users hear. -->
+           <article class="say"> and change initial, name, city, stars, text
+           and footer; if the stars are not five, aria-label must be fixed
+           too, because that is what screen reader users hear. The average
+           above updates by itself. -->
       <div class="says">
 
         <article class="say reveal">
           <div class="say-who">
             <span class="say-avatar" aria-hidden="true">G</span>
             <b>Giulia</b>
-            <span class="say-ctx">Aerial silks &middot; Milan &middot; 8 months</span>
+            <span class="say-ctx">Milan</span>
           </div>
           <span class="stars" role="img" aria-label="5 stars out of 5">
             <svg class="ico"><use href="#ico-star" /></svg>
@@ -1868,13 +1940,14 @@
           <p class="say-text">
             &laquo;I was sure I did not have enough strength in my arms, and instead the problem was how I was climbing. Now I get to the top without feeling like I am dying. What made me stay is that you do not move on until the figure comes out right, so even though I am slow I never feel behind the others.&raquo;
           </p>
+          <p class="say-foot"><span class="tag">Aerial silks</span>Training for 8 months</p>
         </article>
 
         <article class="say reveal">
           <div class="say-who">
             <span class="say-avatar" aria-hidden="true">M</span>
             <b>Marco</b>
-            <span class="say-ctx">Aerial silks &middot; Sesto San Giovanni &middot; 1 year</span>
+            <span class="say-ctx">Sesto San Giovanni</span>
           </div>
           <span class="stars" role="img" aria-label="5 stars out of 5">
             <svg class="ico"><use href="#ico-star" /></svg>
@@ -1886,13 +1959,14 @@
           <p class="say-text">
             &laquo;Before, I could not touch the floor with my hands even with bent knees. The mobility work is constant, part of every lesson is devoted to it, and in a year I have gained a flexibility I thought I could no longer have at 38. My breathing has changed too: I get through a whole lesson without falling apart halfway.&raquo;
           </p>
+          <p class="say-foot"><span class="tag">Aerial silks</span>Training for 1 year</p>
         </article>
 
         <article class="say reveal">
           <div class="say-who">
             <span class="say-avatar" aria-hidden="true">S</span>
             <b>Sara</b>
-            <span class="say-ctx">Aerial silks and hoop &middot; Monza &middot; 4 months</span>
+            <span class="say-ctx">Monza</span>
           </div>
           <span class="stars" role="img" aria-label="5 stars out of 5">
             <svg class="ico"><use href="#ico-star" /></svg>
@@ -1904,6 +1978,7 @@
           <p class="say-text">
             &laquo;I came from nothing, never done any sport in my life, and I was really afraid of leaving the ground. Nobody here pushes you into things you are not ready for: they wait until you feel safe and then you go up. One thing: I would like more evening slots, because with work I can only come twice a week.&raquo;
           </p>
+          <p class="say-foot"><span class="tag">Silks and hoop</span>Training for 4 months</p>
         </article>
 
       </div>
@@ -2344,6 +2419,30 @@
     voci.forEach(a => osservatore.observe(a, { attributes: true, attributeFilter: ['class'] }));
   }
 
+
+  /* Media e conteggio delle recensioni: li ricalcolo dalle schede invece di
+     scriverli a mano, cosi' aggiungendo o togliendo una recensione, o cambiando
+     le stelle a una, il riquadro in alto non resta indietro. I valori giusti
+     sono comunque nell'HTML, per chi ha JS spento. */
+  (function () {
+    var box = document.querySelector('.voto');
+    if (!box) return;
+    var schede = document.querySelectorAll('.say');
+    if (!schede.length) return;
+    var somma = 0;
+    schede.forEach(function (s) {
+      somma += s.querySelectorAll('.stars .ico:not(.off)').length;
+    });
+    var media = somma / schede.length;
+    box.querySelector('b').textContent = media.toFixed(1).replace('.', '.');
+    var piene = Math.round(media);
+    box.querySelectorAll('.stars .ico').forEach(function (ico, i) {
+      ico.classList.toggle('off', i >= piene);
+    });
+    box.querySelector('.stars').setAttribute('aria-label', media.toFixed(1) + ' stars out of 5');
+    var n = box.querySelector('[data-n]');
+    if (n) n.textContent = schede.length;
+  })();
 </script>
 
 </body>
