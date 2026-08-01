@@ -1173,30 +1173,6 @@
 
   /* ---- dicono di me ---- */
 
-  /* Il titolo lasciava mezza riga vuota a destra: li' ci sta il riepilogo del
-     voto, che e' anche la prima cosa che si guarda in una pagina di recensioni. */
-  /* .section-head e' largo al massimo 40rem: al riquadro del voto serve tutta
-     la riga, altrimenti finisce appiccicato in mezzo al titolo */
-  .say-head { display: grid; gap: 1.2rem 2.4rem; align-items: end; max-width: none; }
-  /* dentro il grid il gap di .section-head non lavora piu' fra occhiello,
-     titolo e sommario: li rimetto in colonna con lo stesso respiro */
-  .say-head > div:first-child {
-    max-width: 40rem; display: flex; flex-direction: column;
-    align-items: start; gap: 1rem;
-  }
-  @media (min-width: 900px) { .say-head { grid-template-columns: 1fr auto; } }
-  .voto {
-    background: var(--card); border-radius: 20px; padding: 1.1rem 1.5rem;
-    display: grid; justify-items: center; gap: 0.3rem; min-width: 13rem;
-  }
-  .voto b {
-    font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
-    font-size: 2.6rem; line-height: 1; color: var(--fg);
-  }
-  .voto .stars .ico { width: 20px; height: 20px; }
-  .voto-note { font-size: 0.8rem; color: var(--fg-soft); text-align: center; line-height: 1.45; }
-  .voto-note b { font-family: inherit; font-size: inherit; color: var(--fg-mid); }
-
   /* Il numero di schede cambia nel tempo: oggi tre, domani due o quattro.
      auto-fit distribuisce quello che c'e' senza tornare a toccare il foglio. */
   .says {
@@ -1267,13 +1243,14 @@
 
   /* Le stelle sono disegnate, non caratteri: cosi' seguono le altre icone del
      sito e prendono il colore da qui. */
-  .stars { display: inline-flex; gap: 3px; color: #A2701A; --star-fill: var(--albicocca); }
-  .stars .ico { width: 18px; height: 18px; }
-  /* La stella non assegnata: stessa forma, solo contorno. */
-  .stars .off {
-    color: color-mix(in srgb, #A2701A 34%, transparent);
-    --star-fill: transparent;
-  }
+  /* Le stelle sono disegnate, non caratteri: cosi' seguono le altre icone
+     del sito. Niente contorno scuro: il bordo e' dello stesso oro del pieno,
+     con i vertici arrotondati, cosi' la punta non buca e la stella resta
+     morbida come il resto della pagina. */
+  .stars { display: inline-flex; gap: 4px; color: #EFA83A; --star-fill: #F6BE55; }
+  .stars .ico { width: 19px; height: 19px; }
+  /* la stella non assegnata: stessa forma, solo il contorno appena accennato */
+  .stars .off { color: #E3D3C2; --star-fill: transparent; }
 </style>
 </head>
 <body>
@@ -1425,12 +1402,12 @@
     <path d="M12 21c4.2-4.6 6.4-8 6.4-10.8A6.4 6.4 0 0 0 5.6 10.2C5.6 13 7.8 16.4 12 21z" />
     <circle cx="12" cy="10.2" r="2.4" />
   </symbol>
-  <!-- La stella delle recensioni: piena albicocca con il bordo scuro, perche'
-       su scheda bianca l'albicocca da sola non si vedrebbe. Il pieno arriva da
-       una variabile, cosi' la stella spenta usa lo stesso disegno. -->
+  <!-- La stella delle recensioni: cinque punte regolari, bordo dello stesso
+       oro del pieno e vertici arrotondati. Il pieno arriva da una variabile,
+       cosi' la stella spenta riusa lo stesso disegno senza un secondo symbol. -->
   <symbol id="ico-star" viewBox="0 0 24 24" fill="var(--star-fill, currentColor)"
-          stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
-    <path d="M12 2.8l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.6l6.5-.9z" />
+          stroke="currentColor" stroke-width="1.9" stroke-linejoin="round">
+    <path d="M12 2.4 L14.41 8.68 L21.13 9.03 L15.9 13.27 L17.64 19.77 L12 16.1 L6.36 19.77 L8.1 13.27 L2.87 9.03 L9.59 8.68 Z" />
   </symbol>
 </svg>
 
@@ -1819,7 +1796,7 @@
           </div>
           <div class="place-row">
             <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-juggle" /></svg></span>
-            <div><b>Befly Aerial &middot; Milano Clown Festival</b><span>Camp e strada</span></div>
+            <div><b>Befly Aerial &middot; Milano Clown Festival</b><span>Circus lab e camp</span></div>
           </div>
         </div>
 
@@ -1849,22 +1826,9 @@
 
   <section id="dicono" class="tint-menta">
     <div class="wrap">
-      <div class="section-head say-head reveal">
-        <div>
-          <p class="eyebrow">Dicono di me</p>
-          <h2 class="display">Le parole di chi viene a lezione</h2>
-        </div>
-        <div class="voto">
-          <b>5,0</b>
-          <span class="stars" role="img" aria-label="media 5 stelle su 5">
-            <svg class="ico"><use href="#ico-star" /></svg>
-            <svg class="ico"><use href="#ico-star" /></svg>
-            <svg class="ico"><use href="#ico-star" /></svg>
-            <svg class="ico"><use href="#ico-star" /></svg>
-            <svg class="ico"><use href="#ico-star" /></svg>
-          </span>
-          <span class="voto-note">su <b data-n>3</b> recensioni</span>
-        </div>
+      <div class="section-head reveal">
+        <p class="eyebrow">Dicono di me</p>
+        <h2 class="display">Le parole di chi viene a lezione</h2>
       </div>
 
       <!-- Le recensioni sono quelle vere, incollate come sono arrivate. Per
@@ -1889,7 +1853,7 @@
             <svg class="ico"><use href="#ico-star" /></svg>
           </span>
           <p class="say-text">
-            &laquo;Ero sicura di non avere abbastanza forza nelle braccia e invece il problema era come salivo. Adesso arrivo in cima senza sentirmi morire. Quello che mi ha fatto restare &egrave; che non si va avanti finch&eacute; la figura non viene bene, quindi anche se sono lenta non mi sento mai indietro rispetto agli altri.&raquo;
+            &laquo;Ero sicura di non avere abbastanza forza nelle braccia e invece il problema era come salivo. Adesso arrivo in cima senza sentirmi morire. Quello che mi ha fatto restare &egrave; che con Annalisa non si va avanti finch&eacute; la figura non viene bene, quindi anche se sono lenta non mi sento mai indietro rispetto agli altri.&raquo;
           </p>
           <p class="say-foot"><span class="tag">Tessuti aerei</span>Si allena da 8 mesi</p>
         </article>
@@ -1908,7 +1872,7 @@
             <svg class="ico"><use href="#ico-star" /></svg>
           </span>
           <p class="say-text">
-            &laquo;Prima non toccavo terra con le mani nemmeno a gambe piegate. Il lavoro sulla mobilit&agrave; &egrave; costante, un pezzo di lezione &egrave; sempre dedicato a quello, e in un anno ho guadagnato una flessibilit&agrave; che pensavo di non poter pi&ugrave; avere a 38 anni. Anche il fiato &egrave; cambiato: reggo tutta la lezione senza crollare a met&agrave;.&raquo;
+            &laquo;Prima non toccavo terra con le mani nemmeno a gambe piegate. Con Annalisa il lavoro sulla mobilit&agrave; &egrave; costante, un pezzo di lezione &egrave; sempre dedicato a quello, e in un anno ho guadagnato una flessibilit&agrave; che pensavo di non poter pi&ugrave; avere a 38 anni. Anche il fiato &egrave; cambiato: reggo tutta la lezione senza crollare a met&agrave;.&raquo;
           </p>
           <p class="say-foot"><span class="tag">Tessuti aerei</span>Si allena da 1 anno</p>
         </article>
@@ -1927,9 +1891,9 @@
             <svg class="ico"><use href="#ico-star" /></svg>
           </span>
           <p class="say-text">
-            &laquo;Vengo da zero, mai fatto sport in vita mia, e la paura di staccarmi da terra era tanta. Qui nessuno ti spinge a fare cose per cui non sei pronta, si aspetta che tu sia sicura e poi si sale. Unica cosa, vorrei pi&ugrave; orari serali perch&eacute; con il lavoro riesco a venire solo due volte a settimana.&raquo;
+            &laquo;Vengo da zero, mai fatto sport in vita mia, e la paura di staccarmi da terra era tanta. Annalisa non ti spinge a fare cose per cui non sei pronta, aspetta che tu sia sicura e poi si sale. Unica cosa, vorrei pi&ugrave; orari serali perch&eacute; con il lavoro riesco a venire solo due volte a settimana.&raquo;
           </p>
-          <p class="say-foot"><span class="tag">Tessuti e cerchio</span>Si allena da 4 mesi</p>
+          <p class="say-foot"><span class="tag">Cerchio aereo</span>Si allena da 4 mesi</p>
         </article>
 
       </div>
@@ -2034,9 +1998,7 @@
           <li><b>Fidelizzazione degli iscritti</b> &mdash; la progressione tecnica incentiva la continuit&agrave;, favorendo una permanenza lunga nei corsi.</li>
           <li><b>Valorizzazione degli spazi</b> &mdash; utilizzo di soffitti e sale, rendendo gli ambienti multifunzionali.</li>
           <li><b>Crescita del valore percepito della palestra</b> &mdash; un'offerta originale, moderna e in crescita.</li>
-          <li><b>Nessun vincolo</b> &mdash; si parte con una giornata di prova e un corso pilota, e si struttura solo se i numeri tornano.</li>
         </ul>
-        <p class="panel-note">Serve soprattutto un soffitto alto: se manca un punto dove ancorare, la struttura la porto io.</p>
       </div>
 
       <div class="steps reveal">
@@ -2371,29 +2333,6 @@
   }
 
 
-  /* Media e conteggio delle recensioni: li ricalcolo dalle schede invece di
-     scriverli a mano, cosi' aggiungendo o togliendo una recensione, o cambiando
-     le stelle a una, il riquadro in alto non resta indietro. I valori giusti
-     sono comunque nell'HTML, per chi ha JS spento. */
-  (function () {
-    var box = document.querySelector('.voto');
-    if (!box) return;
-    var schede = document.querySelectorAll('.say');
-    if (!schede.length) return;
-    var somma = 0;
-    schede.forEach(function (s) {
-      somma += s.querySelectorAll('.stars .ico:not(.off)').length;
-    });
-    var media = somma / schede.length;
-    box.querySelector('b').textContent = media.toFixed(1).replace('.', ',');
-    var piene = Math.round(media);
-    box.querySelectorAll('.stars .ico').forEach(function (ico, i) {
-      ico.classList.toggle('off', i >= piene);
-    });
-    box.querySelector('.stars').setAttribute('aria-label', media.toFixed(1).replace('.', ',') + ' stelle su 5');
-    var n = box.querySelector('[data-n]');
-    if (n) n.textContent = schede.length;
-  })();
 </script>
 
 </body>

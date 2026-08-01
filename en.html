@@ -1171,30 +1171,6 @@
 
   /* ---- reviews ---- */
 
-  /* Il titolo lasciava mezza riga vuota a destra: li' ci sta il riepilogo del
-     voto, che e' anche la prima cosa che si guarda in una pagina di recensioni. */
-  /* .section-head e' largo al massimo 40rem: al riquadro del voto serve tutta
-     la riga, altrimenti finisce appiccicato in mezzo al titolo */
-  .say-head { display: grid; gap: 1.2rem 2.4rem; align-items: end; max-width: none; }
-  /* dentro il grid il gap di .section-head non lavora piu' fra occhiello,
-     titolo e sommario: li rimetto in colonna con lo stesso respiro */
-  .say-head > div:first-child {
-    max-width: 40rem; display: flex; flex-direction: column;
-    align-items: start; gap: 1rem;
-  }
-  @media (min-width: 900px) { .say-head { grid-template-columns: 1fr auto; } }
-  .voto {
-    background: var(--card); border-radius: 20px; padding: 1.1rem 1.5rem;
-    display: grid; justify-items: center; gap: 0.3rem; min-width: 13rem;
-  }
-  .voto b {
-    font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
-    font-size: 2.6rem; line-height: 1; color: var(--fg);
-  }
-  .voto .stars .ico { width: 20px; height: 20px; }
-  .voto-note { font-size: 0.8rem; color: var(--fg-soft); text-align: center; line-height: 1.45; }
-  .voto-note b { font-family: inherit; font-size: inherit; color: var(--fg-mid); }
-
   /* Il numero di schede cambia nel tempo: oggi tre, domani due o quattro.
      auto-fit distribuisce quello che c'e' senza tornare a toccare il foglio. */
   .says {
@@ -1265,13 +1241,14 @@
 
   /* Le stelle sono disegnate, non caratteri: cosi' seguono le altre icone del
      sito e prendono il colore da qui. */
-  .stars { display: inline-flex; gap: 3px; color: #A2701A; --star-fill: var(--albicocca); }
-  .stars .ico { width: 18px; height: 18px; }
-  /* La stella non assegnata: stessa forma, solo contorno. */
-  .stars .off {
-    color: color-mix(in srgb, #A2701A 34%, transparent);
-    --star-fill: transparent;
-  }
+  /* Le stelle sono disegnate, non caratteri: cosi' seguono le altre icone
+     del sito. Niente contorno scuro: il bordo e' dello stesso oro del pieno,
+     con i vertici arrotondati, cosi' la punta non buca e la stella resta
+     morbida come il resto della pagina. */
+  .stars { display: inline-flex; gap: 4px; color: #EFA83A; --star-fill: #F6BE55; }
+  .stars .ico { width: 19px; height: 19px; }
+  /* la stella non assegnata: stessa forma, solo il contorno appena accennato */
+  .stars .off { color: #E3D3C2; --star-fill: transparent; }
 </style>
 </head>
 <body>
@@ -1423,12 +1400,12 @@
     <path d="M12 21c4.2-4.6 6.4-8 6.4-10.8A6.4 6.4 0 0 0 5.6 10.2C5.6 13 7.8 16.4 12 21z" />
     <circle cx="12" cy="10.2" r="2.4" />
   </symbol>
-  <!-- The review star: filled apricot with a dark outline, because on a white
-       card apricot alone would not show. The fill comes from a variable, so the
-       empty star can reuse the same drawing. -->
+  <!-- The review star: five regular points, outline in the same gold as the
+       fill and rounded joins. The fill comes from a variable, so the empty star
+       reuses the same drawing without a second symbol. -->
   <symbol id="ico-star" viewBox="0 0 24 24" fill="var(--star-fill, currentColor)"
-          stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
-    <path d="M12 2.8l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.6l6.5-.9z" />
+          stroke="currentColor" stroke-width="1.9" stroke-linejoin="round">
+    <path d="M12 2.4 L14.41 8.68 L21.13 9.03 L15.9 13.27 L17.64 19.77 L12 16.1 L6.36 19.77 L8.1 13.27 L2.87 9.03 L9.59 8.68 Z" />
   </symbol>
 </svg>
 
@@ -1865,7 +1842,7 @@
           </div>
           <div class="place-row">
             <span class="chip sm" aria-hidden="true"><svg class="ico"><use href="#ico-juggle" /></svg></span>
-            <div><b>Befly Aerial &middot; Milano Clown Festival</b><span>Camps and street</span></div>
+            <div><b>Befly Aerial &middot; Milano Clown Festival</b><span>Circus lab and camps</span></div>
           </div>
         </div>
 
@@ -1895,22 +1872,9 @@
 
   <section id="dicono" class="tint-menta">
     <div class="wrap">
-      <div class="section-head say-head reveal">
-        <div>
-          <p class="eyebrow">Reviews</p>
-          <h2 class="display">In the words of the people who train with me</h2>
-        </div>
-        <div class="voto">
-          <b>5.0</b>
-          <span class="stars" role="img" aria-label="average 5 stars out of 5">
-            <svg class="ico"><use href="#ico-star" /></svg>
-            <svg class="ico"><use href="#ico-star" /></svg>
-            <svg class="ico"><use href="#ico-star" /></svg>
-            <svg class="ico"><use href="#ico-star" /></svg>
-            <svg class="ico"><use href="#ico-star" /></svg>
-          </span>
-          <span class="voto-note">from <b data-n>3</b> reviews</span>
-        </div>
+      <div class="section-head reveal">
+        <p class="eyebrow">Reviews</p>
+        <h2 class="display">In the words of the people who train with me</h2>
       </div>
 
       <!-- Real reviews, pasted as they arrived. To add one, duplicate an
@@ -1934,7 +1898,7 @@
             <svg class="ico"><use href="#ico-star" /></svg>
           </span>
           <p class="say-text">
-            &laquo;I was sure I did not have enough strength in my arms, and instead the problem was how I was climbing. Now I get to the top without feeling like I am dying. What made me stay is that you do not move on until the figure comes out right, so even though I am slow I never feel behind the others.&raquo;
+            &laquo;I was sure I did not have enough strength in my arms, and instead the problem was how I was climbing. Now I get to the top without feeling like I am dying. What made me stay is that with Annalisa you do not move on until the figure comes out right, so even though I am slow I never feel behind the others.&raquo;
           </p>
           <p class="say-foot"><span class="tag">Aerial silks</span>Training for 8 months</p>
         </article>
@@ -1953,7 +1917,7 @@
             <svg class="ico"><use href="#ico-star" /></svg>
           </span>
           <p class="say-text">
-            &laquo;Before, I could not touch the floor with my hands even with bent knees. The mobility work is constant, part of every lesson is devoted to it, and in a year I have gained a flexibility I thought I could no longer have at 38. My breathing has changed too: I get through a whole lesson without falling apart halfway.&raquo;
+            &laquo;Before, I could not touch the floor with my hands even with bent knees. With Annalisa the mobility work is constant, part of every lesson is devoted to it, and in a year I have gained a flexibility I thought I could no longer have at 38. My breathing has changed too: I get through a whole lesson without falling apart halfway.&raquo;
           </p>
           <p class="say-foot"><span class="tag">Aerial silks</span>Training for 1 year</p>
         </article>
@@ -1972,9 +1936,9 @@
             <svg class="ico"><use href="#ico-star" /></svg>
           </span>
           <p class="say-text">
-            &laquo;I came from nothing, never done any sport in my life, and I was really afraid of leaving the ground. Nobody here pushes you into things you are not ready for: they wait until you feel safe and then you go up. One thing: I would like more evening slots, because with work I can only come twice a week.&raquo;
+            &laquo;I came from nothing, never done any sport in my life, and I was really afraid of leaving the ground. Annalisa does not push you into things you are not ready for: she waits until you feel safe and then you go up. One thing: I would like more evening slots, because with work I can only come twice a week.&raquo;
           </p>
-          <p class="say-foot"><span class="tag">Silks and hoop</span>Training for 4 months</p>
+          <p class="say-foot"><span class="tag">Aerial hoop</span>Training for 4 months</p>
         </article>
 
       </div>
@@ -2079,9 +2043,7 @@
           <li><b>Member loyalty</b> &mdash; technical progression rewards continuity and keeps people in the courses longer.</li>
           <li><b>Space put to work</b> &mdash; ceilings and halls become multi-purpose rooms.</li>
           <li><b>A gym that is perceived as worth more</b> &mdash; an original, modern, growing offer.</li>
-          <li><b>No commitment</b> &mdash; we start with a trial day and a pilot course, and you only build it out if the numbers work.</li>
         </ul>
-        <p class="panel-note">Mostly you need a high ceiling: if there's no point to anchor to, I bring the rig myself.</p>
       </div>
 
       <div class="steps reveal">
@@ -2416,29 +2378,6 @@
   }
 
 
-  /* Media e conteggio delle recensioni: li ricalcolo dalle schede invece di
-     scriverli a mano, cosi' aggiungendo o togliendo una recensione, o cambiando
-     le stelle a una, il riquadro in alto non resta indietro. I valori giusti
-     sono comunque nell'HTML, per chi ha JS spento. */
-  (function () {
-    var box = document.querySelector('.voto');
-    if (!box) return;
-    var schede = document.querySelectorAll('.say');
-    if (!schede.length) return;
-    var somma = 0;
-    schede.forEach(function (s) {
-      somma += s.querySelectorAll('.stars .ico:not(.off)').length;
-    });
-    var media = somma / schede.length;
-    box.querySelector('b').textContent = media.toFixed(1).replace('.', '.');
-    var piene = Math.round(media);
-    box.querySelectorAll('.stars .ico').forEach(function (ico, i) {
-      ico.classList.toggle('off', i >= piene);
-    });
-    box.querySelector('.stars').setAttribute('aria-label', media.toFixed(1) + ' stars out of 5');
-    var n = box.querySelector('[data-n]');
-    if (n) n.textContent = schede.length;
-  })();
 </script>
 
 </body>
