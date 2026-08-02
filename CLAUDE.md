@@ -45,11 +45,11 @@ attenzione anche a:
 
 Dentro `index.html` (le righe valgono anche, spostate, per `en.html`):
 
-- righe ~33–1329: `<style>`, diviso da commenti `/* ---- nome ---- */`
+- righe ~33–1382: `<style>`, diviso da commenti `/* ---- nome ---- */`
   (tipografia, barra, bottoni, hero, sezioni, chi sono, domande, contatti,
-  collage, dicono di me);
-- righe ~1534–2296: il markup, `header.topbar` + `main` con una `<section>` per blocco;
-- righe ~2298–2407: `<script>`, quattro blocchi senza librerie.
+  collage, foto che respirano, dicono di me);
+- righe ~1587–2342: il markup, `header.topbar` + `main` con una `<section>` per blocco;
+- righe ~2351–2466: `<script>`, quattro blocchi senza librerie.
 
 Le righe lunghissime (decine di migliaia di caratteri) sono foto in `data:` base64:
 non leggerle, usa `awk 'length($0)<400'` o `grep -n` per muoverti nel file.
@@ -109,6 +109,13 @@ Quattro blocchi, tutti in italiano e tutti protetti da
 2. `#progress` → filo di avanzamento in cima;
 3. voce di menu attiva + contatori `.fig b[data-to]`;
 4. ricentraggio della striscia del menu sul telefono.
+
+Le foto che si muovono, invece, sono tutte CSS e stanno nella sezione
+`/* ---- foto che respirano ---- */`. Una regola scritta lì spiega il criterio e
+va letta prima di estenderlo ad altre immagini: quello che si vede non è la
+percentuale di ingrandimento ma **quanti pixel al secondo si muove il bordo**
+(`larghezza × (picco − 1) / durata`). Sotto i 2 px/s la foto sembra ferma, ed è
+il motivo per cui respirano solo le due fasce larghe e non il ritratto.
 
 Nel blocco 4 c'è un avvertimento importante e va rispettato: **non usare
 `scrollIntoView()`** sui link del menu. Agisce su tutti i contenitori scorrevoli

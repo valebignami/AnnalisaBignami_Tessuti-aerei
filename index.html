@@ -1229,6 +1229,59 @@
   .photo-band.quiet .pb-tint { background:linear-gradient(150deg, rgba(111,198,179,.20), rgba(255,242,211,.10) 55%, rgba(237,162,177,.18)); }
   .photo-band .pb-line { position:absolute; left:0; right:0; bottom:clamp(1.1rem,4vw,2.4rem); margin:0; padding-inline:1.2rem; text-align:center; color:#FFF7F0; font-family:"Trebuchet MS","Segoe UI",Verdana,sans-serif; font-weight:700; letter-spacing:-0.01em; line-height:1.1; font-size:clamp(1.25rem,3.6vw,2.1rem); text-shadow:0 2px 20px rgba(60,30,15,.55); }
 
+  /* ---- foto che respirano ---- */
+
+  /* Le due fasce a tutta larghezza si ingrandiscono e tornano indietro senza
+     fermarsi mai. Il contenitore ha overflow:hidden, quindi la foto cresce
+     dentro il ritaglio e la frase che ci sta sopra non si sposta di un pixel.
+
+     Il picco e' 1.07 per una ragione misurata, non per gusto: quello che
+     l'occhio vede non e' la percentuale di ingrandimento ma di quanti pixel al
+     secondo si muove il bordo, cioe' larghezza x (picco - 1) / durata. Sotto i
+     2 px/s circa la foto sembra ferma. Il primo tentativo, picco 1.045, dava
+     1,4 px/s: l'animazione girava e non la vedeva nessuno.
+
+     Per lo stesso motivo respirano solo queste due, che sono larghe 1025px. Il
+     ritratto di Chi sono ne ha 236, e per muoversi alla stessa velocita' gli
+     servirebbe un picco di 1.25, cioe' una carrellata e non un respiro. Su una
+     foto piccola questo effetto non esiste: non e' stato messo.
+
+     Il selettore e' > img di proposito: la fascia con le due bambine tiene le
+     sue foto dentro .pb-duo e resta fuori. */
+  @keyframes respiro {
+    0%, 100% { transform: scale(1);    }
+    50%      { transform: scale(1.07); }
+  }
+  .photo-band > img       { animation: respiro 20s ease-in-out infinite; }
+  /* durata diversa: in sincrono si leggerebbero come un battito, e un battito
+     si nota */
+  .photo-band.quiet > img { animation-duration: 24s; animation-delay: -11s; }
+
+  /* La foto della scheda si avvicina dentro la cornice, che resta ferma: la
+     scheda non cambia misura e quelle accanto non si spostano di un pixel.
+     Si usa scale, che e' una proprieta' separata da transform, cosi' non
+     litiga con eventuali sollevamenti.
+
+     Il collage non e' qui dentro apposta: le sue cornici hanno gia' il loro
+     ingrandimento (vedi .collage figure:hover), e sommarne un secondo dentro
+     la cornice porterebbe la foto all'11%.
+
+     Solo con un mouse vero: su un telefono :hover scatta al tocco e poi resta
+     appiccicato finche' non tocchi altrove. */
+  @media (hover: hover) and (pointer: fine) {
+    .disc-foto img { transition: scale .45s cubic-bezier(.22, .7, .3, 1); }
+    .disc:hover .disc-foto img { scale: 1.07; }
+  }
+
+  /* Il respiro e' decorazione, quindi a chi ha chiesto meno movimento va tolto
+     del tutto. L'avvicinamento invece resta, accorciato: risponde a un gesto,
+     e toglierlo sembrerebbe che la pagina non abbia sentito. */
+  @media (prefers-reduced-motion: reduce) {
+    .photo-band > img { animation: none; }
+    .disc-foto img { transition-duration: .2s; }
+    .disc:hover .disc-foto img { scale: 1.03; }
+  }
+
   /* ---- dicono di me ---- */
 
   /* Il numero di schede cambia nel tempo: oggi tre, domani due o quattro.
@@ -2301,9 +2354,15 @@
     items.forEach(el => el.classList.add('on'));
   } else {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
+      // Il ritardo a cascata si conta solo sugli elementi che stanno entrando
+      // davvero. Prima si usava l'indice di entries, dove pero' fanno numero
+      // anche quelli usciti dal campo: bastava che l'osservatore ne segnalasse
+      // quattro insieme a uno solo che entrava, e quello si prendeva 240ms di
+      // ritardo da solo, comparendo in ritardo senza nessuna cascata intorno.
+      let entrati = 0;
+      entries.forEach((e) => {
         if (!e.isIntersecting) return;
-        e.target.style.transitionDelay = (i * 60) + 'ms';
+        e.target.style.transitionDelay = (entrati++ * 60) + 'ms';
         e.target.classList.add('on');
         io.unobserve(e.target);
       });
