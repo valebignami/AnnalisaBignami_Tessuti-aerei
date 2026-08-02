@@ -1,7 +1,7 @@
 # Sito di Annalisa Bignami
 
-Sito vetrina per i corsi di discipline aeree (tessuti, cerchio, amaca) e
-preparazione fisica a Milano, Morbegno e in Lombardia.
+Sito vetrina per i corsi di Acrobatica Aerea (tessuti, cerchio, amaca) e
+preparazione fisica a Milano, in Valtellina e in Lombardia.
 
 ## Com'è fatto
 
@@ -17,6 +17,17 @@ python -m http.server 8777
 ```
 
 e poi aprire `http://<indirizzo-del-pc>:8777` dal telefono.
+
+## L'immagine dell'anteprima
+
+Quando il link viene condiviso in chat, WhatsApp e i social mostrano un riquadro con
+un'immagine: sono `og-cover.png` (italiano) e `og-cover-en.png` (inglese). Il testo è
+stampato dentro l'immagine, quindi quando cambiano i corsi o le zone va rifatta anche
+quella. I sorgenti stanno in [`card-social/`](card-social/): si aprono in un browser
+con la finestra a 1200×630 e si salva lo screenshot sul PNG corrispondente.
+
+Le chat tengono in cache le anteprime: un link già mandato continuerà a mostrare
+l'immagine vecchia per qualche giorno.
 
 ## Le versioni precedenti
 
