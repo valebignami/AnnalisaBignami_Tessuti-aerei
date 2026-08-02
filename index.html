@@ -1249,13 +1249,32 @@
      Il selettore e' > img di proposito: la fascia con le due bambine tiene le
      sue foto dentro .pb-duo e resta fuori. */
   @keyframes respiro {
-    0%, 100% { transform: scale(1);    }
-    50%      { transform: scale(1.07); }
+    0%, 100% { transform: scale(1);             }
+    50%      { transform: scale(var(--picco));  }
   }
-  .photo-band > img       { animation: respiro 20s ease-in-out infinite; }
+  .photo-band > img       { --picco: 1.07; animation: respiro 20s ease-in-out infinite; }
   /* durata diversa: in sincrono si leggerebbero come un battito, e un battito
      si nota */
   .photo-band.quiet > img { animation-duration: 24s; animation-delay: -11s; }
+
+  /* La fascia e' larga quanto la finestra, quindi su uno schermo stretto
+     rimpicciolisce - e con essa la velocita' del bordo, che e' l'unica cosa
+     che si vede. Sul telefono, 375px di larghezza, il picco 1.07 dava 1,3 px/s:
+     sotto soglia, esattamente come il primo tentativo da computer.
+     A restare costante deve essere la velocita', non la percentuale, quindi il
+     picco cresce mano a mano che lo schermo cala, e la durata si accorcia per
+     non doverlo alzare troppo. Sul telefono l'effetto assomiglia piu' a una
+     carrellata lenta che a un respiro: e' il prezzo per renderlo visibile.
+     Le soglie sono quelle gia' usate altrove nel foglio, non nuove. */
+  @media (max-width: 780px) { .photo-band > img { --picco: 1.10; } }
+  @media (max-width: 620px) {
+    .photo-band > img       { --picco: 1.12; animation-duration: 18s; }
+    .photo-band.quiet > img { animation-duration: 21s; }
+  }
+  @media (max-width: 430px) {
+    .photo-band > img       { --picco: 1.15; animation-duration: 16s; }
+    .photo-band.quiet > img { animation-duration: 19s; }
+  }
 
   /* La foto della scheda si avvicina dentro la cornice, che resta ferma: la
      scheda non cambia misura e quelle accanto non si spostano di un pixel.
