@@ -115,7 +115,15 @@ Le foto che si muovono, invece, sono tutte CSS e stanno nella sezione
 va letta prima di estenderlo ad altre immagini: quello che si vede non è la
 percentuale di ingrandimento ma **quanti pixel al secondo si muove il bordo**
 (`larghezza × (picco − 1) / durata`). Sotto i 2 px/s la foto sembra ferma, ed è
-il motivo per cui respirano solo le due fasce larghe e non il ritratto.
+il motivo per cui respirano solo le due fasce larghe e non il ritratto, e per cui
+il picco cresce quando lo schermo si stringe: a restare costante dev'essere la
+velocità, non la percentuale.
+
+Da qui viene anche la divisione fra i due effetti sulle foto dei corsi: dove c'è
+un mouse si avvicinano al passaggio (`hover: hover`), dove non c'è respirano
+(`hover: none`). Sul telefono le schede vanno in colonna, la foto arriva a 310px
+e se ne vedono due per volta, quindi il respiro funziona; nella griglia da
+computer la stessa foto scende a 258px e se ne vedrebbero sei insieme.
 
 Nel blocco 4 c'è un avvertimento importante e va rispettato: **non usare
 `scrollIntoView()`** sui link del menu. Agisce su tutti i contenitori scorrevoli

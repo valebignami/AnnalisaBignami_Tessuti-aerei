@@ -1291,11 +1291,39 @@
     .disc:hover .disc-foto img { scale: 1.07; }
   }
 
+  /* Dove il mouse non c'e', la foto della scheda respira invece di aspettare
+     un passaggio che non arrivera' mai. Non e' un ripiego: sul telefono le
+     schede vanno in colonna e la foto diventa larga 310px contro i 375 della
+     fascia, cioe' quasi uguale, e se ne vedono due per volta invece di sei.
+     Le due ragioni per cui sul computer il respiro qui non ha senso - foto
+     piccola, troppe insieme - sul telefono non valgono nessuna delle due.
+
+     La condizione e' (hover: none) e non solo la larghezza, perche' cio' che
+     decide non e' lo schermo stretto ma l'assenza di un puntatore: chi rimpi-
+     cciolisce la finestra sul computer tiene il suo avvicinamento e non si
+     ritrova sei foto che respirano.
+
+     Le tre schede di ogni fila partono sfasate: nth-child da 1-2-3-1-2-3
+     perche' sono due file da tre, quindi due schede consecutive hanno sempre
+     indice diverso e non pulsano mai in coppia.
+     I ritardi sono -5s e -11s e non -6s e -12s: a un terzo esatto di ciclo la
+     seconda e la terza si ritrovano sempre alla stessa dimensione, una che
+     cresce e una che cala. Sfalsati cosi', le tre misure sono sempre diverse. */
+  @media (hover: none) and (max-width: 620px) {
+    .disc-foto img { --picco: 1.12; animation: respiro 18s ease-in-out infinite; }
+    .disc:nth-child(2) .disc-foto img { animation-delay:  -5s; }
+    .disc:nth-child(3) .disc-foto img { animation-delay: -11s; }
+  }
+  @media (hover: none) and (max-width: 430px) {
+    .disc-foto img { --picco: 1.16; }
+  }
+
   /* Il respiro e' decorazione, quindi a chi ha chiesto meno movimento va tolto
      del tutto. L'avvicinamento invece resta, accorciato: risponde a un gesto,
      e toglierlo sembrerebbe che la pagina non abbia sentito. */
   @media (prefers-reduced-motion: reduce) {
-    .photo-band > img { animation: none; }
+    .photo-band > img,
+    .disc-foto img { animation: none; }
     .disc-foto img { transition-duration: .2s; }
     .disc:hover .disc-foto img { scale: 1.03; }
   }
