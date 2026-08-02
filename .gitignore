@@ -12,3 +12,9 @@
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# Scarti degli strumenti automatici: screenshot di prova e log del browser.
+# Le immagini vere del sito stanno tutte in immagini/, mai qui in mezzo.
+.playwright-mcp/
+prova-*.png
+verifica-*.png

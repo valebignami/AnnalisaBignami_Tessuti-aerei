@@ -75,15 +75,15 @@ Ordine degli strati, dichiarato nel commento "sezioni": sfondo → bolle (0) →
 
 ### Le card dell'anteprima social
 
-`og-cover.png` e `og-cover-en.png` sono le immagini che compaiono quando il link
-viene condiviso in chat. Sono PNG da 1200×630 con **il testo stampato dentro**:
+`immagini/og-cover.png` e `immagini/og-cover-en.png` sono le immagini che compaiono
+quando il link viene condiviso in chat. Sono PNG da 1200×630 con **il testo stampato dentro**:
 cambiare i meta non le tocca. Vanno rigenerate ogni volta che cambia il nome della
 disciplina, l'elenco dei corsi o le zone.
 
 Il sorgente è in `card-social/`: `og-cover.html` e `og-cover-en.html`, una per
 lingua, autoportanti come il resto del sito. Si modificano, si aprono in un browser
-con la finestra a 1200×630 e si salva lo screenshot sul PNG corrispondente nella
-cartella principale. Le misure devono restare 1200×630, perché sono dichiarate in
+con la finestra a 1200×630 e si salva lo screenshot sul PNG corrispondente in
+`immagini/`. Le misure devono restare 1200×630, perché sono dichiarate in
 `og:image:width` e `og:image:height`. Le due card si rifanno sempre insieme.
 
 Attenzione: WhatsApp e Facebook tengono in cache le anteprime, quindi un link già
@@ -91,10 +91,14 @@ condiviso continua a mostrare la card vecchia per giorni.
 
 ### Immagini
 
+Tutti i file immagine stanno in **`immagini/`**, mai nella cartella radice: le foto
+del collage (`foto-*.jpg`) e le due card social. Se generi immagini di lavoro o
+screenshot, tienili fuori dal repository — nella cartella temporanea di sessione.
+
 Due meccanismi convivono: le foto dentro hero, schede e ritratto sono **inline in
 base64** (il file resta autoportante); il collage della gallery e poche altre
-puntano ai `foto-*.jpg` nella cartella radice. Icone, logo e favicon sono SVG scritti
-a mano nel markup.
+puntano ai file in `immagini/`. Icone, logo e favicon sono SVG scritti a mano nel
+markup.
 
 ### JavaScript
 
@@ -122,6 +126,8 @@ sopra l'elemento, documento compreso, e blocca lo scorrimento della pagina. Si u
 
 ## Cartelle
 
+- `immagini/` — tutte le immagini usate dal sito: le foto del collage e le due card
+  social. Le immagini nuove vanno qui, non nella cartella radice.
 - `card-social/` — i due sorgenti HTML delle immagini di anteprima (vedi sopra).
 - `versioni/` — istantanee del sito, una per cambiamento importante, nominate
   `sito-AAAAMMGG-HHMM-descrizione.html`. Servono solo a confrontare o tornare
