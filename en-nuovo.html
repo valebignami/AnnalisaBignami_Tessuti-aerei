@@ -519,6 +519,21 @@
     opacity: .55;
   }
 
+  /* Sul telefono la scala sale di un gradino nella parte bassa. I corpi piccoli
+     - elenchi, note, etichette - erano gia' cosi' quando le descrizioni erano
+     di tre righe; con i testi del quaderno, che ne fanno nove, tre righe di
+     14px diventano un paragrafo di 14px, e su uno schermo da 375px si legge
+     con fatica. I gradini grandi non si toccano: crescerebbero i titoli, che
+     stanno bene come sono. Si sposta la scala, non le singole regole: e' il
+     motivo per cui esiste. */
+  @media (max-width: 640px) {
+    :root {
+      --t-2xs: 0.72rem;   /* 12.2px invece di 11.2 */
+      --t-xs:  0.84rem;   /* 14.3px invece di 13.3 */
+      --t-sm:  0.94rem;   /* 16.0px invece di 15.0 */
+    }
+  }
+
   /* Telefono: le voci del menu devono essere colpibili col pollice (44px, la
      misura minima di Apple), i titoli non devono spezzarsi male, le sezioni
      respirano un po' meno perche' lo schermo e' corto. */
