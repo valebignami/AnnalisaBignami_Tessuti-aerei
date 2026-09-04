@@ -248,9 +248,10 @@
        parola in mezzo al niente. Stesso trattamento del sito della feijoa. */
     .nav a {
       display: inline-flex; align-items: center;
-      /* 44px davvero, non 36: il commento qui sopra prometteva la misura minima
-         di Apple ma il valore ne dava otto in meno, e il pollice li sentiva */
-      min-height: 44px; padding: 0.28rem 0.85rem;
+      /* 36px e non i 44 che il commento qui sopra promette: portate a 44 le
+         pastiglie diventano una fascia troppo alta su uno schermo corto, e la
+         barra si mangia mezza schermata. Scelta di ingombro, non svista. */
+      min-height: 36px; padding: 0.28rem 0.85rem;
       text-transform: none; letter-spacing: 0.01em; font-size: var(--t-sm);
       color: var(--fg); background: var(--card);
       border: 1px solid var(--line); border-radius: 999px;
@@ -286,16 +287,15 @@
     background: color-mix(in srgb, var(--mandarino) 12%, #FFFFFF);
     border: 1px solid color-mix(in srgb, var(--mandarino) 32%, transparent);
   }
-  /* Erano alti 21px: sotto i 24 del livello AA, figurarsi i 44 raccomandati
-     per il dito. Il testo resta piccolo, cresce l'area che si puo' premere -
-     32px dove c'e' il mouse, 44 dove c'e' il pollice. Su un sito di chi insegna
-     anche in inglese e spagnolo, il cambio lingua non e' un dettaglio. */
+  /* Restano piccoli di proposito. Erano stati portati a 32px col mouse e 44 col
+     dito per rispettare la soglia tattile, ma sul telefono la coppia ITA/ENG
+     diventava un blocco che rubava spazio alla barra e si vedeva troppo: qui
+     conta di piu' l'ingombro, perche' la lingua si sceglie una volta sola e
+     poi non si tocca piu'. */
   .lang-toggle a {
-    display: inline-flex; align-items: center; justify-content: center;
-    min-height: 32px;
     text-decoration: none; line-height: 1; white-space: nowrap;
     font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.06em;
-    color: var(--fg-mid); padding: 0.32rem 0.7rem; border-radius: 999px;
+    color: var(--fg-mid); padding: 0.32rem 0.62rem; border-radius: 999px;
   }
   .lang-toggle a:hover { color: var(--fg); }
   .lang-toggle a.on { background: var(--mandarino); color: var(--fg); }
@@ -303,8 +303,7 @@
      va appoggiato in alto a destra, sulla riga del nome, fuori dal flusso */
   @media (max-width: 1380px) {
     .topbar .wrap { position: relative; }
-    .lang-toggle { position: absolute; top: 0.25rem; right: 0; }
-    .lang-toggle a { min-height: 44px; padding-inline: 0.85rem; }
+    .lang-toggle { position: absolute; top: 0.5rem; right: 0; }
   }
 
   /* ---------------- bottoni ---------------- */
